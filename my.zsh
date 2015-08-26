@@ -12,5 +12,5 @@ function cdf() {
 
 
 
-alias vt = 'mvim -c "vsplit test.cpp"'
-alias v = 'mvim'
+alias vt='mvim -c "vsplit test.cpp"'
+alias v='mvim'

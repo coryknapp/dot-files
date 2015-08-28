@@ -10,8 +10,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'ervandew/supertab'
@@ -62,7 +62,7 @@ set foldmethod=marker
 
 "quickly edit vimrc {{{
 "I keep a hard link to my vimrc at this path for git
-command! Vrc edit $HOME/Code/my-dot-vimrc/vimrc
+command! Vrc edit $HOME/Code/dot-files/vimrc
 command! Vso so $HOME/.vimrc
 "}}}
 
@@ -90,11 +90,10 @@ autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell spelllang=en_us
 "}}}
 
 
+let g:neocomplete#enable_at_startup = 1
+
 let g:EclimCompletionMethod = 'completefunc'
 if &completefunc != '' | let &omnifunc=&completefunc | endif
-let g:ycm_global_ycm_extra_conf = '~/Code/ycm_cpp.py'
-" turn of eclim syntax checking, because we use syntastic
-" let g:EclimFileTypeValidate = 0
 
 " UltiSnips config and related hotkey {{{
 " add my own code snippets to the path

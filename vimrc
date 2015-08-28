@@ -12,10 +12,11 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'itchyny/lightline.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neoinclude.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'ervandew/supertab'
-
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -97,12 +98,7 @@ if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 " UltiSnips config and related hotkey {{{
 " add my own code snippets to the path
-let g:UltiSnipsSnippetDirectories=['UltiSnips',$HOME.'/Code/snippets']
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>', '<tab>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>', '<s-tab>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:UltiSnipsSnippetDirectories=['UltiSnips',$HOME.'/Code/dot-files/snippets']
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<c-CR>"
@@ -129,8 +125,8 @@ let g:lightline = {
       \   'modified': 'MyModified',
       \   'filename': 'MyFilename'
       \ },
-      \ 'separator': { 'left': '', 'right': ''},
-      \ 'subseparator': { 'left': '', 'right': '' }
+      \ 'separator': { 'left': '|', 'right': '<'},
+      \ 'subseparator': { 'left': '|', 'right': '<' }
       \ }
 
 function! MyModified()
@@ -204,20 +200,25 @@ endfunction
 " LaTex {{{
 function! SetLatexOps ()
 	
+	"typing &= is awkward
+	inoremap <silent><C-=> &=
+
 	setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
 	if filereadable('Makefile')
   		setlocal makeprg=make
 	else
-  		exec "setlocal makeprg=make\\ -f\\ ~/Code/latex.mk\\ " . substitute(bufname("%"),"tex$","pdf", "")
 		endif	
 	"set up word wrap
 	set tw=79
 	" call ToggleWordWrap()
 	if &completefunc != '' | let &omnifunc=&completefunc | endif
 
-	"
-	let g:syntastic_quiet_messages = { "regex":   'possible\ unwanted\ space at \"{\"' }
-	"let g:syntastic_quiet_messages = { "regex":   'punctuation\ mark\ \"!\"\ should\ be\ placed\ after\ end\ of\ math\ mode' }
+	let g:syntastic_quiet_messages = {
+		\"regex": [
+			\'possible\ unwanted\ space at \"{\"',
+			\'punctuation\ mark\ \"!\"\ should\ be\ placed\ after\ end\ of\ math\ mode'
+		\]
+	\}
 
 endfunction
 autocmd Filetype tex :call SetLatexOps ()

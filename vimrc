@@ -201,7 +201,7 @@ endfunction
 function! SetLatexOps ()
 	
 	"typing &= is awkward
-	inoremap <silent><C-=> &=
+	inoremap <silent><C-\> &=
 
 	setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
 	if filereadable('Makefile')

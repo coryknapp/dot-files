@@ -21,6 +21,9 @@ function cdf() {
 }
 
 function cdv() {
+#get the title of the macvim window
+#match the stuff between the parentheses
+#strip the (, then strip the )
 local dir="$(echo $(topMacVimTitle) | grep -o "(.*)" | sed 's/(//' | sed 's/)//')"
 dir="${dir/#\~/$HOME}" #expand the ~
 cd $dir

@@ -1,0 +1,22 @@
+global !p
+def getStdNamespaceIfNeeded():
+    # open the file we're currently editing
+    fh = open( path )
+    # search the first 20 lines for the std namespace.
+    counter = 20;
+    for line in fh.readlines():
+        if line.strip() == 'using namespace std;':
+            return '';
+        # skip preprocessor stuff, and comment lines
+        elif line[0:1] != '#' and line[0:2] != '//':
+            counter = counter - 1;
+        if counter == 0:
+            # we didn't find it.
+            return 'std::'
+    # we ran out of lines and didn't find it
+    return 'std::'
+endglobal
+
+snippet /cout|pr/ "cout (smart)" !
+`!p snip.rv = getStdNamespaceIfNeeded()`cout << ${1:"foo"} << `!p snip.rv = getStdNamespaceIfNeeded()`endl;
+endsnippet

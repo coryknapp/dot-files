@@ -30,6 +30,14 @@ if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
   endif
 colorscheme solarized
 
+" some remappings
+let mapleader = "\<Space>"
+nnoremap <Leader>w :w<CR>
+nmap <Leader><Leader> V
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`] 
+
 "move these to keep working directories clean
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
@@ -91,6 +99,7 @@ autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell spelllang=en_us
 "}}}
 
 
+
 let g:neocomplete#enable_at_startup = 1
 
 let g:EclimCompletionMethod = 'completefunc'
@@ -98,6 +107,10 @@ if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 " UltiSnips config and related hotkey {{{
 " add my own code snippets to the path
+
+command! Snip exec "split ".join( [$HOME,'/Code/dot-files/snippets/',&filetype,'.snippets'], '' )
+
+
 let g:UltiSnipsSnippetDirectories=['UltiSnips',$HOME.'/Code/dot-files/snippets']
 
 " better key bindings for UltiSnipsExpandTrigger

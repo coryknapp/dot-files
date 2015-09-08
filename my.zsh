@@ -29,6 +29,10 @@ dir="${dir/#\~/$HOME}" #expand the ~
 cd $dir
 }
 
+#open the current folder in the finder
+alias o='open .'
+alias co='cd ~/Code'
+
 alias vt='mvim -c "vsplit test.cpp"'
 alias v='mvim'
 

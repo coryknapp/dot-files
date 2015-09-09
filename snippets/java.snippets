@@ -49,6 +49,14 @@ for i in args:
 \tprivate """ + i[0] + " " + i[1]+ ";"
 if len(args) > 0:
 	snip.rv += "\n"`
+	/**
+	 * Constructor`!p
+if len(args) > 0:
+	snip.rv += "\n"
+args = getArgs(t[1])
+for i in args:
+	snip.rv += "\n\t * @param " + i[1] + " initial value for object's " +i[1]`
+	 **/
 	public `!p snip.rv = snip.basename or "unknown"`($1) { `!p
 args = getArgs(t[1])
 for i in args:
@@ -66,9 +74,9 @@ for i in args:
  	**/"""
 	snip.rv += "\n\tpublic void set" + camel(i[1]) + "(" + i[0] + " " + i[1] + ") {\n" + "\
 	\tthis." + i[1] + " = " + i[1] + ";\n\t}\n"
-	snip.rv +="""/**
+	snip.rv +="""\t/**
  	* returns the object's """ + camel(i[1]) +""" value.
- 	* @return object's """ + camel(i[1]) + """value
+ 	* @return object's """ + camel(i[1]) + """ value
  	**/"""
 	snip.rv += "\n\tpublic " + i[0] + " get" + camel(i[1]) + "() {\
 	\n\t\treturn " + i[1] + ";\n\t}\n"

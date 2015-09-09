@@ -17,6 +17,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
+Plugin 'ervandew/eclim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -29,14 +30,6 @@ if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
     colorscheme solarized
   endif
 colorscheme solarized
-
-" some remappings
-let mapleader = "\<Space>"
-nnoremap <Leader>w :w<CR>
-nmap <Leader><Leader> V
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`] 
 
 "move these to keep working directories clean
 set backupdir=~/.vim/backup//
@@ -99,7 +92,6 @@ autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell spelllang=en_us
 "}}}
 
 
-
 let g:neocomplete#enable_at_startup = 1
 
 let g:EclimCompletionMethod = 'completefunc'
@@ -107,10 +99,6 @@ if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 " UltiSnips config and related hotkey {{{
 " add my own code snippets to the path
-
-command! Snip exec "split ".join( [$HOME,'/Code/dot-files/snippets/',&filetype,'.snippets'], '' )
-
-
 let g:UltiSnipsSnippetDirectories=['UltiSnips',$HOME.'/Code/dot-files/snippets']
 
 " better key bindings for UltiSnipsExpandTrigger
@@ -214,7 +202,7 @@ endfunction
 function! SetLatexOps ()
 	
 	"typing &= is awkward
-	inoremap <silent><C-\> &=
+	imap <C-=> &=
 
 	setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
 	if filereadable('Makefile')
@@ -226,12 +214,8 @@ function! SetLatexOps ()
 	" call ToggleWordWrap()
 	if &completefunc != '' | let &omnifunc=&completefunc | endif
 
-	let g:syntastic_quiet_messages = {
-		\"regex": [
-			\'possible\ unwanted\ space at \"{\"',
-			\'punctuation\ mark\ \"!\"\ should\ be\ placed\ after\ end\ of\ math\ mode'
-		\]
-	\}
+	let g:syntastic_quiet_messages =+ { "regex":   'possible\ unwanted\ space at \"{\"' }
+	let g:syntastic_quiet_messages =+ { "regex":   'punctuation\ mark\ \"!\"\ should\ be\ placed\ after\ end\ of\ math\ mode' }
 
 endfunction
 autocmd Filetype tex :call SetLatexOps ()

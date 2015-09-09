@@ -17,7 +17,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
-Plugin 'ervandew/eclim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

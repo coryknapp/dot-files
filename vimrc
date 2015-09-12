@@ -32,6 +32,9 @@ if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
   endif
 colorscheme solarized
 
+"turn spelling on by default
+set spell spelllang=en_us
+
 "move these to keep working directories clean
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//

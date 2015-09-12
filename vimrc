@@ -18,6 +18,8 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 
+let g:neocomplete#enable_at_startup = 1
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -91,14 +93,13 @@ autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell spelllang=en_us
 "}}}
 
 
-let g:neocomplete#enable_at_startup = 1
-
-let g:EclimCompletionMethod = 'completefunc'
-if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 " UltiSnips config and related hotkey {{{
 " add my own code snippets to the path
 let g:UltiSnipsSnippetDirectories=['UltiSnips',$HOME.'/Code/dot-files/snippets']
+
+command! Snip exec "split ".join(
+			\ [$HOME,'/Code/dot-files/snippets/',&filetype,'.snippets'], '' )
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<c-CR>"
@@ -112,7 +113,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 "configure lightline [https://github.com/itchyny/lightline.vim] {{{
-set guifont=Sauce\ Code\ Powerline:h11
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
@@ -171,9 +171,11 @@ let &colorcolumn=join(range(81,999),",")
 "java {{{
 function! SetJavaOps ()
 	" set up eclim
-	let g:EclimCompletionMethod = 'completefunc'
-	if &completefunc != '' | let &omnifunc=&completefunc | endif
-
+	if !exists('g:neocomplete#force_omni_input_patterns')
+		let g:neocomplete#force_omni_input_patterns = {}
+	endif
+	let g:neocomplete#force_omni_input_patterns.java =
+		\ '\%(\h\w*\|)\)\.\w*'	
 	" i like to run my java stuff in the apple terminal instead of in vim
 	command! Ej call EclimRunInAppleTerminal()
 	"set up syntastic

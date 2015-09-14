@@ -17,8 +17,17 @@ Plugin 'honza/vim-snippets'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
+Plugin 'wellle/targets.vim'
 
 let g:neocomplete#enable_at_startup = 1
+
+" some remappings		
+let mapleader = "\<Space>"		
+nnoremap <Leader>w :w<CR>		
+nmap <Leader><Leader> V		
+vnoremap <silent> y y`]		
+vnoremap <silent> p p`]		
+nnoremap <silent> p p`] 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

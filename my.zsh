@@ -37,7 +37,7 @@ alias vt='mvim -c "vsplit test.cpp"'
 alias v='mvim'
 
 alias j='java'
-alias jc = 'javac'
+alias jc='javac'
 alias jd='javadoc -d docs'
 
 alias eclim='/Applications/Eclipse.app/Contents/Eclipse/eclimd'

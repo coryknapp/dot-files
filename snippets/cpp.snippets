@@ -77,8 +77,31 @@ endsnippet
 #includes
 snippet incio "#include <iostream>" b
 #include <iostream>
+$0
 endsnippet
 
 snippet incv "#include <vector>" b
 #include <vector>
+$0
+endsnippet
+
+snippet incsf "#include <SFML/*.hpp>" b
+#include <SFML/Audio.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+$0
+endsnippet
+
+snippet incm "#include <map>" b
+#include <map>
+endsnippet
+
+snippet temp "template <typename T>" b
+template <typename ${1:T}>
+$2
+endsnippet
+
+snippet temp2 "template <typename T, typename Y>" b
+template <typename ${1:T}, typename ${2:Y}>
+$3
 endsnippet

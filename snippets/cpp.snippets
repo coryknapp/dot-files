@@ -68,8 +68,17 @@ for i in args:
 	snip.rv += "\n\tvoid set" + camel(i[1]) + "(" + i[0] + " " + i[1] + ") {\n" + "\
 	\tm_" + i[1] + " = " + i[1] + ";\n\t}\n"
 
-	snip.rv += "\n\tpublic " + i[0] + " get" + camel(i[1]) + "() {\
+	snip.rv += "\n" + i[0] + " get" + camel(i[1]) + "() {\
 	\n\t\treturn m_" + i[1] + ";\n\t}\n"
 `
 }
+endsnippet
+
+#includes
+snippet incio "#include <iostream>" b
+#include <iostream>
+endsnippet
+
+snippet incv "#include <vector>" b
+#include <vector>
 endsnippet

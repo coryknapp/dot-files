@@ -34,12 +34,13 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 "Fix solarized for apple terminal
-if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
-    let g:solarized_termcolors = &t_Co
-    let g:solarized_termtrans = 1
-    colorscheme solarized
-  endif
-colorscheme solarized
+"if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
+"    let g:solarized_termcolors = &t_Co
+"    let g:solarized_termtrans = 1
+"    colorscheme solarized
+"  endif
+"colorscheme solarized
+colorscheme Ciapre
 
 "turn spelling on by default
 set spell spelllang=en_us

@@ -21,6 +21,11 @@ Plugin 'wellle/targets.vim'
 
 let g:neocomplete#enable_at_startup = 1
 
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
 " some remappings		
 let mapleader = "\<Space>"		
 nnoremap <Leader>w :w<CR>		

@@ -1,5 +1,6 @@
 " Vim color file
 " Converted from Textmate theme Ciapre using Coloration v0.3.3 (http://github.com/sickill/coloration)
+" This is a modification. Original found at https://github.com/jamak/dotvim
 
 set background=dark
 highlight clear

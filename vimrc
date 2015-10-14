@@ -278,6 +278,7 @@ function! SetCppOps ()
 	hi def link cppPrintKeyword Todo
 	"make a new line right after the last #include and move there
 	command! I call MoveToAfterLastInclude()
+	let @t = "^d0$xa{0wi::hi"
 endfunction
 autocmd Filetype cpp :call SetCppOps()
 autocmd Filetype h :call SetCppOps()

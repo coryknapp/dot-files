@@ -41,8 +41,8 @@ let g:rbpt_colorpairs = [
     \ ['Darkblue',    'firebrick3'],
     \ ['darkgreen',   'RoyalBlue3'],
     \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
+    \ ['darkred',     'LightSkyBlue'],
+    \ ['red',         'LightBlue'],
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
@@ -276,9 +276,17 @@ function! SetCppOps ()
 	" take it out when after you're done testing/debugging
 	syntax keyword cppPrintKeyword cout endl cin cerror
 	hi def link cppPrintKeyword Todo
+	"make a new line right after the last #include and move there
+	command! I call MoveToAfterLastInclude()
 endfunction
 autocmd Filetype cpp :call SetCppOps()
 autocmd Filetype h :call SetCppOps()
 autocmd Filetype c :call SetCppOps()
+
+function! MoveToAfterLastInclude ()
+	execute "?#include"
+	normal o
+endfunction
+
 " }}}
 

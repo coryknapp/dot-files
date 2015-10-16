@@ -24,6 +24,37 @@ def mixedCase(word):
 	return word[0].lower() + word[1:]
 endglobal
 
+snippet pln "println" b
+System.out.println( $1:{"goop"} );
+endsnippet
+
+snippet doch277 "javadoc file header" !b
+/**
+ * ${1:description}
+ * 
+ * CECS 277 Sec 03 3720 Obj Oriented Appl Development
+ * @author Cory Knapp
+ * Created on `!p
+import datetime
+snip.rv = datetime.date.today().strftime('%b. %d, %Y')
+`
+ **/
+endsnippet
+
+
+snippet doch "javadoc file header" !b
+/**
+ * ${1:description}
+ *
+ * @author Cory Knapp
+ * Created on `!p
+import datetime
+snip.rv = datetime.date.today().strftime('%b. %d, %Y')
+`
+ **/
+endsnippet
+
+
 snippet doc "javadoc" !
 /**
  * ${1:description}
@@ -49,8 +80,16 @@ for i in args:
 \tprivate """ + i[0] + " " + i[1]+ ";"
 if len(args) > 0:
 	snip.rv += "\n"`
+
 	/**
-	 * Constructor`!p
+	 * Default constructor
+	 **/
+	public `!p snip.rv = snip.basename or "unknown"`(){
+		$2
+	}
+
+	/**
+	 * Argument Constructor`!p
 if len(args) > 0:
 	snip.rv += "\n\t *"
 args = getArgs(t[1])
@@ -68,18 +107,29 @@ if len(args) == 0:
 args = getArgs(t[1])
 if len(args) == 0: snip.rv = ""
 for i in args:
-	snip.rv +="""\t/**
- 	* sets the """ + camel(i[1]) +""" to a new value.
- 	* @param """ + i[0]+ "new value for the object's " + camel(i[1]) + """
+	snip.rv +="""\n\t/**
+ 	* sets the """ + i[1] +""" to a new value.
+ 	* @param """ + i[1]+ " new value for the object's " + i[1] + """
  	**/"""
-	snip.rv += "\n\tpublic void set" + camel(i[1]) + "(" + i[0] + " " + i[1] + ") {\n" + "\
-	\tthis." + i[1] + " = " + i[1] + ";\n\t}\n"
-	snip.rv +="""\t/**
- 	* returns the object's """ + camel(i[1]) +""" value.
- 	* @return object's """ + camel(i[1]) + """ value
+	snip.rv += "\n\tpublic void set" + camel(i[1]) + "(" + i[0] + " " + i[1] + ") {\n\t\tthis." + i[1] + " = " + i[1] + ";\n\t}\n"
+	snip.rv +="""\n\t/**
+ 	* returns the object's """ + i[1] +""" value.
+ 	* @return object's """ + i[1] + """ value
  	**/"""
 	snip.rv += "\n\tpublic " + i[0] + " get" + camel(i[1]) + "() {\
-	\n\t\treturn " + i[1] + ";\n\t}\n"
-`
+	\n\t\treturn " + i[1] + ";\n\t}\n"`
+`!p
+args = getArgs(t[1])
+if len(args) > 0:
+	snip.rv += """\t/**
+	 * Returns a human readable representation of the object as a string
+	 * 
+	 * @return the object as a string
+	 **/
+	public String toString() {
+		String returnString = """ + "\"\";"
+	for i in args:
+		snip.rv += "\n\t\treturnString += \"" + camel( i[1] )+ ": \" +" + i[1] + "+ \"\\n\";"
+	snip.rv += "\n\t\treturn returnString;\n\t}"`
 }
 endsnippet

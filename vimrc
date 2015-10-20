@@ -18,6 +18,10 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 Plugin 'wellle/targets.vim'
+Plugin 'aperezdc/vim-template'
+
+"config vim-template to use my templates folder
+let g:templates_directory = expand( "~/Code/dot-files/templates" )
 
 let g:neocomplete#enable_at_startup = 1
 
@@ -113,11 +117,16 @@ nmap j gj
 nmap k gk
 "}}}
 "
-" ease moving between splits {{{
+" ease moving between splits/buffers {{{
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+"option-h on mac os x go to previous buffer
+nnoremap ˙ :bp<CR>
+
+"option-l on mac os x go to previous buffer
+nnoremap ¬ :bf<CR>
 " }}}
 
 " fugitive config {{{

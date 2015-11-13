@@ -31,7 +31,7 @@ cd $dir
 
 function vs() {
 	local cmd="mvim -c \"vsplit $2\" $1"
-	echo $cmd
+	eval ${cmd}
 }
 
 #open the current folder in the finder

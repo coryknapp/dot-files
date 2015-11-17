@@ -19,6 +19,7 @@ Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
 Plugin 'wellle/targets.vim'
 Plugin 'aperezdc/vim-template'
+Plugin 'tpope/vim-commentary'
 
 "config vim-template to use my templates folder
 let g:templates_directory = expand( "~/Code/dot-files/templates" )
@@ -219,11 +220,9 @@ let &colorcolumn=join(range(81,999),",")
 "java {{{
 function! SetJavaOps ()
 	" set up eclim
-	if !exists('g:neocomplete#force_omni_input_patterns')
-		let g:neocomplete#force_omni_input_patterns = {}
-	endif
-	let g:neocomplete#force_omni_input_patterns.java =
-		\ '\%(\h\w*\|)\)\.\w*'	
+	
+	let g:SuperTabDefaultCompletionType = 'context'
+	
 	" i like to run my java stuff in the apple terminal instead of in vim
 	command! Ej call EclimRunInAppleTerminal()
 	"set up syntastic
@@ -253,18 +252,10 @@ function! SetLatexOps ()
 	"typing &= is awkward
 	imap <C-=> &=
 
-	setlocal errorformat=%f:%l:\ %m,%f:%l-%\\d%\\+:\ %m
-	if filereadable('Makefile')
-  		setlocal makeprg=make
-	else
-		endif	
 	"set up word wrap
 	set tw=79
 	" call ToggleWordWrap()
 	if &completefunc != '' | let &omnifunc=&completefunc | endif
-
-	let g:syntastic_quiet_messages =+ { "regex":   'possible\ unwanted\ space at \"{\"' }
-	let g:syntastic_quiet_messages =+ { "regex":   'punctuation\ mark\ \"!\"\ should\ be\ placed\ after\ end\ of\ math\ mode' }
 
 endfunction
 autocmd Filetype tex :call SetLatexOps ()

@@ -105,3 +105,16 @@ snippet temp2 "template <typename T, typename Y>" b
 template <typename ${1:T}, typename ${2:Y}>
 $3
 endsnippet
+
+
+snippet oper "Operator overload" b
+${1:`!p snip.rv = snip.basename or "class"`} $1::operator${2:=}($1 o){
+	$3
+}
+endsnippet
+
+snippet operh "Operator overload for class header" b
+${1:`!p snip.rv = snip.basename or "class"`} operator${2:=}($1 o);
+$3
+
+endsnippet

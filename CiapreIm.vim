@@ -11,6 +11,23 @@ endif
 
 let g:colors_name = "Ciapre"
 
+let s:cs_plain_text = ""
+let s:cs_comments= ""
+let s:cs_documentation_markup= ""
+let s:cs_documentation_markup_keywords= ""
+let s:cs_strings = ""
+let s:cs_characters = ""
+let s:cs_numbers = ""
+let s:cs_keywords = ""
+let s:cs_preprocessor_statments = ""
+let s:cs_URLs = ""
+let s:cs_attributes = ""
+let s:cs_class_names = ""
+let s:cs_function_and_method_names = ""
+let s:cs_constants = ""
+let s:cs_type_names = ""
+let s:cs_instance_variables_and_globals= ""
+
 hi Cursor ctermfg=17 ctermbg=137 cterm=NONE guifg=#1f2433 guibg=#a89770 gui=NONE
 hi Visual ctermfg=NONE ctermbg=23 cterm=NONE guifg=NONE guibg=#1b324a gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=23 cterm=NONE guifg=NONE guibg=#2f333c gui=NONE

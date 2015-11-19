@@ -52,6 +52,10 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
+command! Hlg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+
 " some remappings		
 let mapleader = "\<Space>"		
 nnoremap <Leader>w :w<CR>		
@@ -64,14 +68,11 @@ nnoremap <silent> p p`]
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-"Fix solarized for apple terminal
-"if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
-"    let g:solarized_termcolors = &t_Co
-"    let g:solarized_termtrans = 1
-"    colorscheme solarized
-"  endif
-"colorscheme solarized
 colorscheme Ciapre
+"Show the highlight group under the courser.
+command! Hlg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 "turn spelling on by default
 set spell spelllang=en_us

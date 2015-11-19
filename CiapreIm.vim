@@ -23,7 +23,7 @@ let s:cs_IncSearch = "ctermfg=17 ctermbg=143 cterm=NONE guifg=#1f2433 guibg=#bab
 "		comments (javadoc for example.)
 "	rubyConstant
 "	rubyRailsUserClass
-let s:cs_Special = "ctermfg=144 ctermbg=NONE cterm=NONE guifg=#CCCCFF guibg=NONE gui=NONE"
+let s:cs_Special = "ctermfg=144 ctermbg=NONE cterm=NONE guifg=#3399FF guibg=NONE gui=NONE"
 
 
 " the following highlighting is used by :
@@ -91,7 +91,6 @@ let s:cs_Title = "ctermfg=144 ctermbg=NONE cterm=bold guifg=#c2b790 guibg=NONE g
 "	Constant
 "	Define
 "	Float
-"	Identifier
 "	Keyword
 "	Number
 "	Operator
@@ -110,6 +109,9 @@ let s:cs_Title = "ctermfg=144 ctermbg=NONE cterm=bold guifg=#c2b790 guibg=NONE g
 "	cssValueLength
 let s:cs_Directory = "ctermfg=131 ctermbg=NONE cterm=NONE guifg=#cc0033 guibg=NONE gui=NONE"
 
+" the following highlighting is used by :
+"	Identifier
+let s:cs_Identifier = "ctermfg=131 ctermbg=NONE cterm=NONE guifg=#009933 guibg=NONE gui=NONE"
 
 " the following highlighting is used by :
 "	LineNr
@@ -225,7 +227,7 @@ let s:cs_VertSplit = "ctermfg=239 ctermbg=239 cterm=NONE guifg=#4e4f4e guibg=#4e
 "	rubyStringDelimiter
 "	rubyRegexp
 "	rubyRegexpDelimiter
-let s:cs_Label = "ctermfg=143 ctermbg=NONE cterm=NONE guifg=#bab972 guibg=NONE gui=NONE"
+let s:cs_Label = "ctermfg=143 ctermbg=NONE cterm=NONE guifg=#FFCC33 guibg=NONE gui=NONE"
 
 
 " the following highlighting is used by :
@@ -299,7 +301,7 @@ exec "hi ErrorMsg ".s:cs_ErrorMsg
 exec "hi WarningMsg ".s:cs_ErrorMsg
 exec "hi Float ".s:cs_Directory
 exec "hi Function ".s:cs_Function
-exec "hi Identifier ".s:cs_Directory
+exec "hi Identifier ".s:cs_Identifier
 exec "hi Keyword ".s:cs_Directory
 exec "hi Label ".s:cs_Label
 exec "hi NonText ".s:cs_NonText

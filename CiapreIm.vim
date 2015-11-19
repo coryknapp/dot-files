@@ -41,7 +41,6 @@ let s:cs_DiffChange = "ctermfg=144 ctermbg=23 cterm=NONE guifg=#c2b790 guibg=#20
 "	PmenuSel
 let s:cs_Visual = "ctermfg=NONE ctermbg=23 cterm=NONE guifg=NONE guibg=#1b324a gui=NONE"
 
-
 " the following highlighting is used by :
 "	Type
 let s:cs_Type = "ctermfg=67 ctermbg=NONE cterm=NONE guifg=#6b84a3 guibg=NONE gui=NONE"
@@ -71,7 +70,7 @@ let s:cs_CursorLine = "ctermfg=NONE ctermbg=23 cterm=NONE guifg=NONE guibg=#2f33
 "	erubyDelimiter
 "	javaScriptBraces
 "	cssBraces
-let s:cs_Pmenu = "ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE"
+let s:cs_Pmenu = "ctermfg=17 ctermbg=144 cterm=NONE guifg=#1f2433 guibg=#c2b790 gui=NONE"
 
 
 " the following highlighting is used by :

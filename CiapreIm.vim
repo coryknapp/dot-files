@@ -141,7 +141,7 @@ let s:cs_StatusLine = "ctermfg=144 ctermbg=239 cterm=bold guifg=#c2b790 guibg=#4
 
 " the following highlighting is used by :
 "	Todo
-let s:cs_Todo = "ctermfg=242 ctermbg=NONE cterm=inverse,bold guifg=#696969 guibg=NONE gui=inverse,bold"
+let s:cs_Todo = "ctermfg=242 ctermbg=NONE cterm=inverse,bold guifg=#e600e5 guibg=NONE gui=inverse,bold"
 
 
 " the following highlighting is used by :

@@ -9,17 +9,20 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "Ciapre"
+let g:colors_name = "television"
 
+let s:c_normalfg = "guifg=#c2b790 "
+let s:c_normalbg = "guibg=#1f2433 "
 
 " the following highlighting is used by :
 "	IncSearch
-let s:cs_IncSearch = "ctermfg=17 ctermbg=143 cterm=NONE guifg=#1f2433 guibg=#bab972 gui=NONE"
+let s:cs_IncSearch =
+			\ "ctermfg=17 ctermbg=143 cterm=NONE guifg=#1f2433 guibg=#bab972 gui=NONE"
 
 
 " the following highlighting is used by :
 "	Special
-"		Special include, possibly among other things, the keywords within
+"		Special include, possibly among other things, keywords, the keywords within
 "		comments (javadoc for example.)
 "	rubyConstant
 "	rubyRailsUserClass
@@ -33,7 +36,7 @@ let s:cs_cssPseudoClassId = "ctermfg=66 ctermbg=NONE cterm=NONE guifg=#60827e gu
 
 " the following highlighting is used by :
 "	DiffChange
-let s:cs_DiffChange = "ctermfg=144 ctermbg=23 cterm=NONE guifg=#c2b790 guibg=#20375d gui=NONE"
+let s:cs_DiffChange = "ctermfg=144 ctermbg=23 cterm=NONE ".s:c_normalfg."guibg=#20375d gui=NONE"
 
 
 " the following highlighting is used by :
@@ -54,7 +57,7 @@ let s:cs_ErrorMsg = "ctermfg=15 ctermbg=88 cterm=NONE guifg=#ffffff guibg=#99000
 
 " the following highlighting is used by :
 "	Normal
-let s:cs_Normal = "ctermfg=144 ctermbg=17 cterm=NONE guifg=#c2b790 guibg=#1f2433 gui=NONE"
+let s:cs_Normal = "ctermfg=144 ctermbg=17 cterm=NONE ".s:c_normalfg.s:c_normalbg."gui=NONE"
 
 " the following highlighting is used by :
 "	CursorLine
@@ -75,12 +78,12 @@ let s:cs_Pmenu = "ctermfg=17 ctermbg=144 cterm=NONE guifg=#1f2433 guibg=#c2b790 
 
 " the following highlighting is used by :
 "	Folded
-let s:cs_Folded = "ctermfg=242 ctermbg=17 cterm=NONE guifg=#696969 guibg=#1f2433 gui=NONE"
+let s:cs_Folded = "ctermfg=242 ctermbg=17 cterm=NONE guifg=#696969 ".s:c_normalbg."gui=NONE"
 
 
 " the following highlighting is used by :
 "	Title
-let s:cs_Title = "ctermfg=144 ctermbg=NONE cterm=bold guifg=#c2b790 guibg=NONE gui=bold"
+let s:cs_Title = "ctermfg=144 ctermbg=NONE cterm=bold ".s:c_normalfg."guibg=NONE gui=bold"
 
 
 " the following highlighting is used by :
@@ -110,7 +113,7 @@ let s:cs_Directory = "ctermfg=131 ctermbg=NONE cterm=NONE guifg=#cc0033 guibg=NO
 
 " the following highlighting is used by :
 "	Identifier
-let s:cs_Identifier = "ctermfg=131 ctermbg=NONE cterm=NONE guifg=#009933 guibg=NONE gui=NONE"
+let s:cs_Identifier = "ctermfg=131 ctermbg=NONE cterm=NONE guifg=#66cc99 guibg=NONE gui=NONE"
 
 " the following highlighting is used by :
 "	LineNr
@@ -136,7 +139,7 @@ let s:cs_Function = "ctermfg=179 ctermbg=NONE cterm=NONE guifg=#dea050 guibg=NON
 
 " the following highlighting is used by :
 "	StatusLine
-let s:cs_StatusLine = "ctermfg=144 ctermbg=239 cterm=bold guifg=#c2b790 guibg=#4e4f4e gui=bold"
+let s:cs_StatusLine = "ctermfg=144 ctermbg=239 cterm=bold ".s:c_normalfg."guibg=#4e4f4e gui=bold"
 
 
 " the following highlighting is used by :
@@ -180,7 +183,7 @@ let s:cs_Boolean = "ctermfg=166 ctermbg=NONE cterm=NONE guifg=#db592e guibg=NONE
 
 " the following highlighting is used by :
 "	DiffAdd
-let s:cs_DiffAdd = "ctermfg=144 ctermbg=64 cterm=bold guifg=#c2b790 guibg=#45820f gui=bold"
+let s:cs_DiffAdd = "ctermfg=144 ctermbg=64 cterm=bold ".s:c_normalfg."guibg=#45820f gui=bold"
 
 
 " the following highlighting is used by :
@@ -231,7 +234,7 @@ let s:cs_Label = "ctermfg=143 ctermbg=NONE cterm=NONE guifg=#FFCC33 guibg=NONE g
 
 " the following highlighting is used by :
 "	StatusLineNC
-let s:cs_StatusLineNC = "ctermfg=144 ctermbg=239 cterm=NONE guifg=#c2b790 guibg=#4e4f4e gui=NONE"
+let s:cs_StatusLineNC = "ctermfg=144 ctermbg=239 cterm=NONE ".s:c_normalfg."guibg=#4e4f4e gui=NONE"
 
 
 " the following highlighting is used by :
@@ -241,7 +244,7 @@ let s:cs_Cursor = "ctermfg=17 ctermbg=137 cterm=NONE guifg=#1f2433 guibg=#a89770
 
 " the following highlighting is used by :
 "	DiffText
-let s:cs_DiffText = "ctermfg=144 ctermbg=24 cterm=bold guifg=#c2b790 guibg=#204a87 gui=bold"
+let s:cs_DiffText = "ctermfg=144 ctermbg=24 cterm=bold ".s:c_normalfg."guibg=#204a87 gui=bold"
 
 
 " the following highlighting is used by :
@@ -309,6 +312,9 @@ exec "hi Operator ".s:cs_Directory
 exec "hi PreProc ".s:cs_Directory
 exec "hi Special ".s:cs_Special
 exec "hi SpecialKey ".s:cs_SpecialKey
+
+" Statement
+" examples in c++: return,
 exec "hi Statement ".s:cs_Directory
 exec "hi StorageClass ".s:cs_Directory
 exec "hi String ".s:cs_Label

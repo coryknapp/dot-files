@@ -52,3 +52,6 @@ alias usb='system_profiler SPUSBDataType'
 alias gp='git push'
 alias gs='git status'
 alias gc='git commit -m'
+
+alias p='python'
+alias py='python'

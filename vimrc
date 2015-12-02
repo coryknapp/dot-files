@@ -20,6 +20,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'wellle/targets.vim'
 Plugin 'aperezdc/vim-template'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-scriptease'
+Plugin 'tpope/vim-obsession'
 
 "config vim-template to use my templates folder
 let g:templates_directory = expand( "~/Code/dot-files/templates" )
@@ -68,7 +70,7 @@ nnoremap <silent> p p`]
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme Ciapre
+colorscheme CiapreIM
 "Show the highlight group under the courser.
 command! Hlg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -114,6 +116,10 @@ command! Vrc edit $HOME/Code/dot-files/vimrc
 command! Vso so $HOME/.vimrc
 "}}}
 
+
+"quickly edit vimrc {{{
+command! Ob Obsess
+
 " move up and down, regardless of the word wrap situation {{{
 nmap j gj
 nmap k gk
@@ -127,7 +133,7 @@ nnoremap <C-H> <C-W><C-H>
 "option-h on mac os x go to previous buffer
 nnoremap ˙ :bp<CR>
 
-"option-l on mac os x go to previous buffer
+"option-l on mac os x go to next buffer
 nnoremap ¬ :bf<CR>
 " }}}
 

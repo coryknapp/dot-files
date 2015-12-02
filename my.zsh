@@ -29,10 +29,12 @@ dir="${dir/#\~/$HOME}" #expand the ~
 cd $dir
 }
 
-function vs() {
+function vvs() {
 	local cmd="mvim -c \"vsplit $2\" $1"
 	eval ${cmd}
 }
+
+alias vs='v -S'
 
 #open the current folder in the finder
 alias o='open .'

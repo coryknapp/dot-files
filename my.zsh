@@ -37,7 +37,7 @@ function vvs() {
 alias vs='v -S'
 
 #open the current folder in the finder
-alias o='open .'
+alias f='open .'
 alias co='cd ~/Code'
 
 alias vt='mvim -c "vsplit test.cpp"'

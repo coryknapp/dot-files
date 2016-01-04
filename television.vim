@@ -11,13 +11,16 @@ endif
 
 let g:colors_name = "television"
 
-let s:c_normalfg = "guifg=#c2b790 "
-let s:c_normalbg = "guibg=#1f2433 "
+let s:c_normalfg = "#c2b790 "
+let s:c_normalbg = "#1f2433 "
 
 " the following highlighting is used by :
 "	IncSearch
 let s:cs_IncSearch =
-			\ "ctermfg=17 ctermbg=143 cterm=NONE guifg=#1f2433 guibg=#bab972 gui=NONE"
+			\ "ctermfg=17 ctermbg=143 cterm=NONE ".
+			\ "guifg=#1f2433 ".
+			\ "guibg=#bab972 ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
@@ -26,44 +29,69 @@ let s:cs_IncSearch =
 "		comments (javadoc for example.)
 "	rubyConstant
 "	rubyRailsUserClass
-let s:cs_Special = "ctermfg=144 ctermbg=NONE cterm=NONE guifg=#3399FF guibg=NONE gui=NONE"
+let s:cs_Special =
+			\"ctermfg=144 ctermbg=NONE cterm=NONE ".
+			\"guifg=#3399FF ".
+			\"guibg=NONE ".
+			\"gui=NONE"
 
 
 " the following highlighting is used by :
 "	cssPseudoClassId
-let s:cs_cssPseudoClassId = "ctermfg=66 ctermbg=NONE cterm=NONE guifg=#60827e guibg=NONE gui=NONE"
+let s:cs_cssPseudoClassId = "ctermfg=66 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#60827e ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	DiffChange
-let s:cs_DiffChange = "ctermfg=144 ctermbg=23 cterm=NONE ".s:c_normalfg."guibg=#20375d gui=NONE"
+let s:cs_DiffChange = "ctermfg=144 ctermbg=23 cterm=NONE ".
+			\ "guifg=".s:c_normalfg.
+			\ "guibg=#20375d ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	Visual
 "	PmenuSel
-let s:cs_Visual = "ctermfg=NONE ctermbg=23 cterm=NONE guifg=NONE guibg=#1b324a gui=NONE"
+let s:cs_Visual = "ctermfg=NONE ctermbg=23 cterm=NONE ".
+			\ "guifg=NONE ".
+			\ "guibg=#1b324a ".
+			\ "gui=NONE"
 
 " the following highlighting is used by :
 "	Type
-let s:cs_Type = "ctermfg=67 ctermbg=NONE cterm=NONE guifg=#6b84a3 guibg=NONE gui=NONE"
+let s:cs_Type = "ctermfg=67 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#6b84a3 ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	ErrorMsg
 "	WarningMsg
-let s:cs_ErrorMsg = "ctermfg=15 ctermbg=88 cterm=NONE guifg=#ffffff guibg=#990000 gui=NONE"
+let s:cs_ErrorMsg = "ctermfg=15 ctermbg=88 cterm=NONE ".
+			\ "guifg=#ffffff ".
+			\ "guibg=#990000 ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	Normal
-let s:cs_Normal = "ctermfg=144 ctermbg=17 cterm=NONE ".s:c_normalfg.s:c_normalbg."gui=NONE"
+let s:cs_Normal = "ctermfg=144 ctermbg=17 cterm=NONE ".
+			\ "guifg=".s:c_normalfg.
+			\ "guibg=".s:c_normalbg.
+			\ "gui=NONE".
 
 " the following highlighting is used by :
 "	CursorLine
 "	CursorColumn
 "	ColorColumn
-let s:cs_CursorLine = "ctermfg=NONE ctermbg=23 cterm=NONE guifg=NONE guibg=#2f333c gui=NONE"
+let s:cs_CursorLine = "ctermfg=NONE ctermbg=23 cterm=NONE ".
+			\ "guifg=NONE ".
+			\ "guibg=#2f333c ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
@@ -73,17 +101,26 @@ let s:cs_CursorLine = "ctermfg=NONE ctermbg=23 cterm=NONE guifg=NONE guibg=#2f33
 "	erubyDelimiter
 "	javaScriptBraces
 "	cssBraces
-let s:cs_Pmenu = "ctermfg=17 ctermbg=144 cterm=NONE guifg=#1f2433 guibg=#c2b790 gui=NONE"
+let s:cs_Pmenu = "ctermfg=17 ctermbg=144 cterm=NONE ".
+			\ "guifg=#1f2433 ".
+			\ "guibg=".s:c_normalfg.
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	Folded
-let s:cs_Folded = "ctermfg=242 ctermbg=17 cterm=NONE guifg=#696969 ".s:c_normalbg."gui=NONE"
+let s:cs_Folded = "ctermfg=242 ctermbg=17 cterm=NONE ".
+			\ "guifg=#696969 ".
+			\ "guibg=".s:c_normalbg.
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	Title
-let s:cs_Title = "ctermfg=144 ctermbg=NONE cterm=bold ".s:c_normalfg."guibg=NONE gui=bold"
+let s:cs_Title = "ctermfg=144 ctermbg=NONE cterm=bold ".
+			\ "guifg=".s:c_normalfg.
+			\ "guibg=NONE ".
+			\ "gui=bold"
 
 
 " the following highlighting is used by :
@@ -109,52 +146,82 @@ let s:cs_Title = "ctermfg=144 ctermbg=NONE cterm=bold ".s:c_normalfg."guibg=NONE
 "	javaScriptFunction
 "	cssColor
 "	cssValueLength
-let s:cs_Directory = "ctermfg=131 ctermbg=NONE cterm=NONE guifg=#cc0033 guibg=NONE gui=NONE"
+let s:cs_Directory = "ctermfg=131 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#cc0033 ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 " the following highlighting is used by :
 "	Identifier
-let s:cs_Identifier = "ctermfg=131 ctermbg=NONE cterm=NONE guifg=#66cc99 guibg=NONE gui=NONE"
+let s:cs_Identifier = "ctermfg=131 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#66cc99 ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 " the following highlighting is used by :
 "	LineNr
-let s:cs_LineNr = "ctermfg=59 ctermbg=23 cterm=NONE guifg=#716e62 guibg=#2f333c gui=NONE"
+let s:cs_LineNr = "ctermfg=59 ctermbg=23 cterm=NONE ".
+			\ "guifg=#716e62 ".
+			\ "guibg=#2f333c ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	Search
 "	Underlined
-let s:cs_Search = "ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline"
+let s:cs_Search = "ctermfg=NONE ctermbg=NONE cterm=underline ".
+			\ "guifg=NONE ".
+			\ "guibg=NONE ".
+			\ "gui=underline"
 
 
 " the following highlighting is used by :
 "	rubyEscape
-let s:cs_rubyEscape = "ctermfg=179 ctermbg=NONE cterm=NONE guifg=#e8bf6a guibg=NONE gui=NONE"
+let s:cs_rubyEscape = "ctermfg=179 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#e8bf6a ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	Function
 "	rubyFunction
-let s:cs_Function = "ctermfg=179 ctermbg=NONE cterm=NONE guifg=#dea050 guibg=NONE gui=NONE"
+let s:cs_Function = "ctermfg=179 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#dea050 ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	StatusLine
-let s:cs_StatusLine = "ctermfg=144 ctermbg=239 cterm=bold ".s:c_normalfg."guibg=#4e4f4e gui=bold"
+let s:cs_StatusLine = "ctermfg=144 ctermbg=239 cterm=bold ".
+			\ "guifg=".s:c_normalfg.
+			\ "guibg=#4e4f4e ".
+			\ "gui=bold"
 
 
 " the following highlighting is used by :
 "	Todo
-let s:cs_Todo = "ctermfg=242 ctermbg=NONE cterm=inverse,bold guifg=#e600e5 guibg=NONE gui=inverse,bold"
+let s:cs_Todo = "ctermfg=242 ctermbg=NONE cterm=inverse,bold ".
+			\ "guifg=#e600e5 ".
+			\ "guibg=NONE ".
+			\ "gui=inverse,bold"
 
 
 " the following highlighting is used by :
 "	DiffDelete
-let s:cs_DiffDelete = "ctermfg=88 ctermbg=NONE cterm=NONE guifg=#89070a guibg=NONE gui=NONE"
+let s:cs_DiffDelete = "ctermfg=88 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#89070a ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	cssCommonAttr
-let s:cs_cssCommonAttr = "ctermfg=131 ctermbg=NONE cterm=NONE guifg=#a94d37 guibg=NONE gui=NONE"
+let s:cs_cssCommonAttr = "ctermfg=131 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#a94d37 ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
@@ -163,33 +230,51 @@ let s:cs_cssCommonAttr = "ctermfg=131 ctermbg=NONE cterm=NONE guifg=#a94d37 guib
 "	rubyPseudoVariable
 "	yamlAnchor
 "	yamlAlias
-let s:cs_rubyInstanceVariable = "ctermfg=168 ctermbg=NONE cterm=NONE guifg=#e64976 guibg=NONE gui=NONE"
+let s:cs_rubyInstanceVariable = "ctermfg=168 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#e64976 ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	cssClassName
-let s:cs_cssClassName = "ctermfg=74 ctermbg=NONE cterm=NONE guifg=#38add8 guibg=NONE gui=NONE"
+let s:cs_cssClassName = "ctermfg=74 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#38add8 ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	MatchParen
-let s:cs_MatchParen = "ctermfg=131 ctermbg=NONE cterm=underline guifg=#c24d43 guibg=NONE gui=underline"
+let s:cs_MatchParen = "ctermfg=131 ctermbg=NONE cterm=underline ".
+			\ "guifg=#c24d43 ".
+			\ "guibg=NONE ".
+			\ "gui=underline"
 
 
 " the following highlighting is used by :
 "	Boolean
-let s:cs_Boolean = "ctermfg=166 ctermbg=NONE cterm=NONE guifg=#db592e guibg=NONE gui=NONE"
+let s:cs_Boolean = "ctermfg=166 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#db592e ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	DiffAdd
-let s:cs_DiffAdd = "ctermfg=144 ctermbg=64 cterm=bold ".s:c_normalfg."guibg=#45820f gui=bold"
+let s:cs_DiffAdd = "ctermfg=144 ctermbg=64 cterm=bold ".
+			\ "guifg=".s:c_normalfg.
+			\ "guibg=#45820f "
+			\ "gui=bold"
 
 
 " the following highlighting is used by :
 "	Comment
 "	erubyComment
-let s:cs_Comment = "ctermfg=242 ctermbg=NONE cterm=NONE guifg=#696969 guibg=NONE gui=NONE"
+let s:cs_Comment = "ctermfg=242 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#696969 ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
@@ -200,7 +285,10 @@ let s:cs_Comment = "ctermfg=242 ctermbg=NONE cterm=NONE guifg=#696969 guibg=NONE
 "	erubyRailsMethod
 "	javaScriptRailsFunction
 "	cssFunctionName
-let s:cs_rubyRailsARAssociationMethod = "ctermfg=59 ctermbg=NONE cterm=NONE guifg=#5c644c guibg=NONE gui=NONE"
+let s:cs_rubyRailsARAssociationMethod = "ctermfg=59 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#5c644c ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
@@ -210,17 +298,26 @@ let s:cs_rubyRailsARAssociationMethod = "ctermfg=59 ctermbg=NONE cterm=NONE guif
 "	htmlTagName
 "	htmlArg
 "	yamlKey
-let s:cs_Tag = "ctermfg=137 ctermbg=NONE cterm=NONE guifg=#a87b60 guibg=NONE gui=NONE"
+let s:cs_Tag = "ctermfg=137 ctermbg=NONE cterm=NONE 
+			\ "guifg=#a87b60 ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	SpecialKey
-let s:cs_SpecialKey = "ctermfg=250 ctermbg=23 cterm=NONE guifg=#bfbfbf guibg=#2f333c gui=NONE"
+let s:cs_SpecialKey = "ctermfg=250 ctermbg=23 cterm=NONE ".
+			\ "guifg=#bfbfbf ".
+			\ "guibg=#2f333c ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	VertSplit
-let s:cs_VertSplit = "ctermfg=239 ctermbg=239 cterm=NONE guifg=#4e4f4e guibg=#4e4f4e gui=NONE"
+let s:cs_VertSplit = "ctermfg=239 ctermbg=239 cterm=NONE
+			\ "guifg=#4e4f4e ".
+			\ "guibg=#4e4f4e ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
@@ -229,41 +326,59 @@ let s:cs_VertSplit = "ctermfg=239 ctermbg=239 cterm=NONE guifg=#4e4f4e guibg=#4e
 "	rubyStringDelimiter
 "	rubyRegexp
 "	rubyRegexpDelimiter
-let s:cs_Label = "ctermfg=143 ctermbg=NONE cterm=NONE guifg=#FFCC33 guibg=NONE gui=NONE"
+let s:cs_Label = "ctermfg=143 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#FFCC33 ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	StatusLineNC
-let s:cs_StatusLineNC = "ctermfg=144 ctermbg=239 cterm=NONE ".s:c_normalfg."guibg=#4e4f4e gui=NONE"
+let s:cs_StatusLineNC = "ctermfg=144 ctermbg=239 cterm=NONE ".
+			\ "guifg=".s:c_normalfg.
+			\ "guibg=#4e4f4e ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	Cursor
-let s:cs_Cursor = "ctermfg=17 ctermbg=137 cterm=NONE guifg=#1f2433 guibg=#a89770 gui=NONE"
+let s:cs_Cursor = "ctermfg=17 ctermbg=137 cterm=NONE ".
+			\ "guifg=#1f2433 ".
+			\ "guibg=#a89770 ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	DiffText
-let s:cs_DiffText = "ctermfg=144 ctermbg=24 cterm=bold ".s:c_normalfg."guibg=#204a87 gui=bold"
+let s:cs_DiffText = "ctermfg=144 ctermbg=24 cterm=bold "
+			\ "guifg=".s:c_normalfg.
+			\ "guibg=#204a87 "
+			\ "gui=bold"
 
 
 " the following highlighting is used by :
 "	yamlDocumentHeader
-let s:cs_yamlDocumentHeader = "ctermfg=144 ctermbg=234 cterm=NONE guifg=#b9aa99 guibg=#1d1d1d gui=NONE"
+let s:cs_yamlDocumentHeader = "ctermfg=144 ctermbg=234 cterm=NONE ".
+			\ "guifg=#b9aa99 ".
+			\ "guibg=#1d1d1d ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	rubyBlockParameter
 "	cssURL
-let s:cs_rubyBlockParameter = "ctermfg=66 ctermbg=NONE cterm=NONE guifg=#6d948d guibg=NONE gui=NONE"
+let s:cs_rubyBlockParameter = "ctermfg=66 ctermbg=NONE cterm=NONE ".
+			\ "guifg=#6d948d ".
+			\ "guibg=NONE ".
+			\ "gui=NONE"
 
 
 " the following highlighting is used by :
 "	NonText
-let s:cs_NonText = "ctermfg=250 ctermbg=17 cterm=NONE guifg=#bfbfbf guibg=#272b38 gui=NONE"
-
-
-
+let s:cs_NonText = "ctermfg=250 ctermbg=17 cterm=NONE ".
+			\ "guifg=#bfbfbf ".
+			\ "guibg=#272b38 ".
+			\ "gui=NONE"
 
 
 " Start of highlight groups...

@@ -14,6 +14,8 @@ let g:colors_name = "television"
 let s:c_normalfg = "#c2b790 "
 let s:c_normalbg = "#1f2433 "
 
+let s:c_lighterbg = "#2f333c "
+
 " the following highlighting is used by :
 "	IncSearch
 let s:cs_IncSearch =
@@ -90,7 +92,7 @@ let s:cs_Normal = "ctermfg=144 ctermbg=17 cterm=NONE ".
 "	ColorColumn
 let s:cs_CursorLine = "ctermfg=NONE ctermbg=23 cterm=NONE ".
 			\ "guifg=NONE ".
-			\ "guibg=#2f333c ".
+			\ "guibg=".s:c_lighterbg".
 			\ "gui=NONE"
 
 
@@ -162,7 +164,7 @@ let s:cs_Identifier = "ctermfg=131 ctermbg=NONE cterm=NONE ".
 "	LineNr
 let s:cs_LineNr = "ctermfg=59 ctermbg=23 cterm=NONE ".
 			\ "guifg=#716e62 ".
-			\ "guibg=#2f333c ".
+			\ "guibg=".s:c_lighterbg.
 			\ "gui=NONE"
 
 
@@ -308,7 +310,7 @@ let s:cs_Tag = "ctermfg=137 ctermbg=NONE cterm=NONE ".
 "	SpecialKey
 let s:cs_SpecialKey = "ctermfg=250 ctermbg=23 cterm=NONE ".
 			\ "guifg=#bfbfbf ".
-			\ "guibg=#2f333c ".
+			\ "guibg=".s:c_lighterbg.
 			\ "gui=NONE"
 
 

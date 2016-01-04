@@ -18,7 +18,7 @@ let s:c_normalbg = "#1f2433 "
 "	IncSearch
 let s:cs_IncSearch =
 			\ "ctermfg=17 ctermbg=143 cterm=NONE ".
-			\ "guifg=#1f2433 ".
+			\ "guifg=".s:c_normalbg.
 			\ "guibg=#bab972 ".
 			\ "gui=NONE"
 
@@ -102,7 +102,7 @@ let s:cs_CursorLine = "ctermfg=NONE ctermbg=23 cterm=NONE ".
 "	javaScriptBraces
 "	cssBraces
 let s:cs_Pmenu = "ctermfg=17 ctermbg=144 cterm=NONE ".
-			\ "guifg=#1f2433 ".
+			\ "guifg=".s:c_normalbg.
 			\ "guibg=".s:c_normalfg.
 			\ "gui=NONE"
 
@@ -343,7 +343,7 @@ let s:cs_StatusLineNC = "ctermfg=144 ctermbg=239 cterm=NONE ".
 " the following highlighting is used by :
 "	Cursor
 let s:cs_Cursor = "ctermfg=17 ctermbg=137 cterm=NONE ".
-			\ "guifg=#1f2433 ".
+			\ "guifg=".s:c_normalbg.
 			\ "guibg=#a89770 ".
 			\ "gui=NONE"
 

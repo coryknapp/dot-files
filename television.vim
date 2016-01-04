@@ -82,7 +82,7 @@ let s:cs_ErrorMsg = "ctermfg=15 ctermbg=88 cterm=NONE ".
 let s:cs_Normal = "ctermfg=144 ctermbg=17 cterm=NONE ".
 			\ "guifg=".s:c_normalfg.
 			\ "guibg=".s:c_normalbg.
-			\ "gui=NONE".
+			\ "gui=NONE"
 
 " the following highlighting is used by :
 "	CursorLine
@@ -298,7 +298,7 @@ let s:cs_rubyRailsARAssociationMethod = "ctermfg=59 ctermbg=NONE cterm=NONE ".
 "	htmlTagName
 "	htmlArg
 "	yamlKey
-let s:cs_Tag = "ctermfg=137 ctermbg=NONE cterm=NONE 
+let s:cs_Tag = "ctermfg=137 ctermbg=NONE cterm=NONE ".
 			\ "guifg=#a87b60 ".
 			\ "guibg=NONE ".
 			\ "gui=NONE"
@@ -314,7 +314,7 @@ let s:cs_SpecialKey = "ctermfg=250 ctermbg=23 cterm=NONE ".
 
 " the following highlighting is used by :
 "	VertSplit
-let s:cs_VertSplit = "ctermfg=239 ctermbg=239 cterm=NONE
+let s:cs_VertSplit = "ctermfg=239 ctermbg=239 cterm=NONE ".
 			\ "guifg=#4e4f4e ".
 			\ "guibg=#4e4f4e ".
 			\ "gui=NONE"
@@ -379,6 +379,9 @@ let s:cs_NonText = "ctermfg=250 ctermbg=17 cterm=NONE ".
 			\ "guifg=#bfbfbf ".
 			\ "guibg=#272b38 ".
 			\ "gui=NONE"
+
+
+
 
 
 " Start of highlight groups...

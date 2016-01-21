@@ -108,13 +108,18 @@ endsnippet
 
 
 snippet oper "Operator overload" b
-${1:`!p snip.rv = snip.basename or "class"`} $1::operator${2:=}($1 o){
+${1:`!p snip.rv = snip.basename or "class"`} $1::operator${2:=}(const $1 &o){
 	$3
 }
 endsnippet
 
 snippet operh "Operator overload for class header" b
-${1:`!p snip.rv = snip.basename or "class"`} operator${2:=}($1 o);
+${1:`!p snip.rv = snip.basename or "class"`} operator${2:=}(const $1 &o);
 $3
+endsnippet
 
+snippet dpp "Documentation with description, precondition, and postcondition" b
+	// $1
+	// PRECONDITION: ${2:nothing}
+	// POSTCONDITION: ${3:nothing}
 endsnippet

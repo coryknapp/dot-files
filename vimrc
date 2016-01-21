@@ -17,11 +17,13 @@ Plugin 'honza/vim-snippets'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/syntastic'
+Plugin 'dbakker/vim-lint'
 Plugin 'wellle/targets.vim'
 Plugin 'aperezdc/vim-template'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-obsession'
+Plugin 'coryknapp/vim-color-flash'
 
 "config vim-template to use my templates folder
 let g:templates_directory = expand( "~/Code/dot-files/templates" )

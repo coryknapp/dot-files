@@ -17,6 +17,89 @@ let s:c_normalbg = "#1f2433 "
 let s:c_lighterbg = "#2f333c "
 let s:c_nontextfg = "#bfbfbf "
 
+" Normal	guifg=White guibg=grey20
+
+" highlight groups
+" Cursor
+" CursorIM
+" Directory
+" DiffAdd
+" DiffChange
+" DiffDelete
+" DiffText
+" ErrorMsg
+" VertSplit
+" Folded
+" FoldColumn
+" IncSearch
+" LineNr
+" ModeMsg
+" MoreMsg
+" NonText
+" Question
+" Search
+" SpecialKey
+" StatusLine
+" StatusLineNC
+" Title
+" Visual
+" VisualNOS
+" WarningMsg
+" WildMenu
+" Menu
+" Scrollbar
+" Tooltip
+
+" syntax highlighting groups
+" Comment	guifg=SkyBlue
+" Constant	guifg=#ffa0a0
+" Identifier	guifg=palegreen
+" Statement	guifg=khaki
+" PreProc	guifg=indianred
+" Type		guifg=darkkhaki
+" Special	guifg=navajowhite
+" Underlined
+" Ignore	guifg=grey40
+" Error
+" Todo		guifg=orangered guibg=yellow2
+
+" color terminal definitions
+" SpecialKey
+" NonText
+" Directory
+" ErrorMsg
+" IncSearch
+" Search
+" MoreMsg
+" ModeMsg
+" LineNr
+" Question
+" StatusLine
+" StatusLineNC
+" VertSplit
+" Title
+" Visual
+" VisualNOS
+" WarningMsg
+" WildMenu
+" Folded
+" FoldColumn
+" DiffAdd
+" DiffChange
+" DiffDelete
+" DiffText
+" Comment
+" Constant
+" Special
+" Identifier
+" Statement
+" PreProc
+" Type	
+" Underlined
+" Ignore
+" Ignore
+" Error
+
 " the following highlighting is used by :
 "	IncSearch
 let s:cs_IncSearch =

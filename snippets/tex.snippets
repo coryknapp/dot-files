@@ -55,3 +55,40 @@ endsnippet
 snippet b "text bold face"
 \textbf{$1}$2
 endsnippet
+
+snippet att "UML attribute" b
+\attribute{$1}
+endsnippet
+
+snippet listhead "listing header" b
+\usepackage{listings,xcolor,courier,mdframed,graphicx}
+\lstset{basicstyle=\footnotesize\ttfamily,
+breaklines=true,
+numbers=left,
+numberstyle=\tiny\color{gray},
+numbersep=5pt,
+firstnumber=0,
+captionpos={t},
+frame=lrtb,
+rulecolor=\color{black},
+framerule=0.5pt,
+columns=flexible
+}
+endsnippet
+
+snippet template "Homework template" b
+\documentclass[12pt]{article}
+
+\title{
+	${1:Assignment}
+}
+\author{
+	Cory Knapp
+}
+
+\begin{document}
+\maketitle
+$2
+
+\end{document}:
+endsnippet

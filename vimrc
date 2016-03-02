@@ -23,7 +23,9 @@ Plugin 'aperezdc/vim-template'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-markdown'
 Plugin 'coryknapp/vim-color-flash'
+Plugin 'beyondmarc/glsl.vim'
 
 "config vim-template to use my templates folder
 let g:templates_directory = expand( "~/Code/dot-files/templates" )
@@ -64,6 +66,7 @@ command! Hlg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> tr
 let mapleader = "\<Space>"		
 nnoremap <Leader>w :w<CR>		
 nmap <Leader><Leader> V		
+map <leader>k :Explore<cr> " open netrw explorer. 
 vnoremap <silent> y y`]		
 vnoremap <silent> p p`]		
 nnoremap <silent> p p`] 
@@ -72,7 +75,7 @@ nnoremap <silent> p p`]
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme CiapreIM
+colorscheme solarized
 "Show the highlight group under the courser.
 command! Hlg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
@@ -111,6 +114,8 @@ set cmdheight=1
 setlocal spell spelllang=en_us
 
 set foldmethod=marker
+
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'cpp', 'c', 'sql']
 
 "quickly edit vimrc {{{
 "I keep a hard link to my vimrc at this path for git

@@ -124,7 +124,6 @@ command! Vso so $HOME/.vimrc
 "}}}
 
 
-"quickly edit vimrc {{{
 command! Ob Obsess
 
 " move up and down, regardless of the word wrap situation {{{
@@ -171,9 +170,21 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "}}}
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
+
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 "configure lightline [https://github.com/itchyny/lightline.vim] {{{
 let g:lightline = {
@@ -270,6 +281,8 @@ function! SetLatexOps ()
 	set tw=79
 	" call ToggleWordWrap()
 	if &completefunc != '' | let &omnifunc=&completefunc | endif
+
+	set makeprg=/Library/TeX/texbin/pdflatex\ %\ && open\ %<.pdf 
 
 endfunction
 autocmd Filetype tex :call SetLatexOps ()

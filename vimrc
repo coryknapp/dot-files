@@ -30,6 +30,8 @@ Plugin 'beyondmarc/glsl.vim'
 "config vim-template to use my templates folder
 let g:templates_directory = expand( "~/Code/dot-files/templates" )
 
+let g:syntastic_text_checkers = ['fucklint']
+
 let g:neocomplete#enable_at_startup = 1
 
 au VimEnter * RainbowParenthesesToggle
@@ -77,9 +79,7 @@ filetype plugin indent on    " required
 
 colorscheme solarized
 "Show the highlight group under the courser.
-command! Hlg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 
 "turn spelling on by default
 set spell spelllang=en_us
@@ -177,11 +177,12 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_vim_checkers = ['vint']
+let g:syntastic_python_checkers = ['python', 'pylint', 'pep257']
 
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_error_symbol = 'X'
+let g:syntastic_style_error_symbol = 'S'
 let g:syntastic_warning_symbol = 'W'
-let g:syntastic_style_warning_symbol = '💩'
+let g:syntastic_style_warning_symbol = 's'
 
 highlight link SyntasticErrorSign SignColumn
 highlight link SyntasticWarningSign SignColumn
@@ -320,3 +321,11 @@ endfunction
 
 " }}}
 
+" markdown{{{
+function! SetMarkdownOps ()
+	" markdownLineBreak
+endfunction
+
+autocmd Filetype markdown call SetMarkdownOps()
+
+" }}}

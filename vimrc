@@ -28,7 +28,7 @@ Plugin 'coryknapp/vim-color-flash'
 Plugin 'beyondmarc/glsl.vim'
 
 "config vim-template to use my templates folder
-let g:templates_directory = expand( "~/Code/dot-files/templates" )
+let g:templates_directory = [ expand( "~/Code/dot-files/templates" ) ]
 
 let g:syntastic_text_checkers = ['fucklint']
 
@@ -72,6 +72,12 @@ map <leader>k :Explore<cr> " open netrw explorer.
 vnoremap <silent> y y`]		
 vnoremap <silent> p p`]		
 nnoremap <silent> p p`] 
+
+" remapping for git (fugitive)
+nnoremap <Leader>gw :Gwrite<CR>		
+nnoremap <Leader>gc :Gcommit<CR>		
+nnoremap <Leader>gd :Gdiff<CR>		
+nnoremap <Leader>gs :Gstatus<CR>	
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

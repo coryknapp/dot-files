@@ -78,8 +78,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 colorscheme solarized
-"Show the highlight group under the courser.
 
+" fix stupid stuff about solarized
+hi clear SignColumn
 
 "turn spelling on by default
 set spell spelllang=en_us

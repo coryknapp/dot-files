@@ -21,12 +21,12 @@ function cdf() {
 }
 
 function cdv() {
-#get the title of the macvim window
-#match the stuff between the parentheses
-#strip the (, then strip the )
-local dir="$(echo $(topMacVimTitle) | grep -o "(.*)" | sed 's/(//' | sed 's/)//')"
-dir="${dir/#\~/$HOME}" #expand the ~
-cd $dir
+	#get the title of the macvim window
+	#match the stuff between the parentheses
+	#strip the (, then strip the )
+	local dir="$(echo $(topMacVimTitle) | grep -o "(.*)" | sed 's/(//' | sed 's/)//')"
+	dir="${dir/#\~/$HOME}" #expand the ~
+	cd $dir
 }
 
 function vvs() {
@@ -34,14 +34,25 @@ function vvs() {
 	eval ${cmd}
 }
 
+alias v='mvim'
+alias vt='v -c "vsplit test.cpp"'
 alias vs='v -S'
+
+function vsf(){
+# open the Session.vim in the foremost finder window
+	local cwd=$(pfd)
+	if [ -f $cwd"/Session.vim" ];
+	then
+		vs $cwd"/Session.vim"
+	else
+		echo "Sorry.  No Session file in $cwd."
+		echo "I'll move you there and you can do what you do, brother."
+ 	fi
+}
 
 #open the current folder in the finder
 alias f='open .'
 alias co='cd ~/Code'
-
-alias vt='mvim -c "vsplit test.cpp"'
-alias v='mvim'
 
 alias j='java'
 alias jc='javac'

@@ -73,6 +73,8 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]		
 nnoremap <silent> p p`] 
 
+nnoremap <C-/> //<CR> 
+
 " remapping for git (fugitive)
 nnoremap <Leader>gw :Gwrite<CR>		
 nnoremap <Leader>gc :Gcommit<CR>		
@@ -331,6 +333,13 @@ endfunction
 " markdown{{{
 function! SetMarkdownOps ()
 	" markdownLineBreak
+	" hi markdownH1
+	hi markdownH2 guifg='Dark Orange'
+	hi markdownH3 guifg=Coral
+	hi markdownH4 guifg=Burlywood
+	hi markdownH5 guifg=Honeydew
+	hi markdownH6 guifg='Light Blue'
+
 endfunction
 
 autocmd Filetype markdown call SetMarkdownOps()

@@ -334,10 +334,10 @@ endfunction
 function! SetMarkdownOps ()
 	" markdownLineBreak
 	" hi markdownH1
-	hi markdownH2 guifg='Dark Orange'
-	hi markdownH3 guifg=Coral
-	hi markdownH4 guifg=Burlywood
-	hi markdownH5 guifg=Honeydew
+	hi markdownH2 guifg='Dark Cyan'
+	hi markdownH3 guifg='Chartreuse'
+	hi markdownH4 guifg='Cornflower'
+	hi markdownH5 guifg='Dark Sea Green'
 	hi markdownH6 guifg='Light Blue'
 
 endfunction

@@ -1,5 +1,5 @@
 export PATH="/usr/texbin":$PATH
-
+echo help
 function pfd() {
   osascript 2>/dev/null <<EOF
     tell application "Finder"
@@ -65,6 +65,9 @@ alias usb='system_profiler SPUSBDataType'
 alias gp='git push'
 alias gs='git status'
 alias gc='git commit -m'
+
+# push my dot-file commits
+alias dp='cd ~/Code/dot-files; git push; cd -'
 
 alias p='python'
 alias py='python'

@@ -26,6 +26,7 @@ Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-markdown'
 Plugin 'coryknapp/vim-color-flash'
 Plugin 'beyondmarc/glsl.vim'
+Plugin 'nelstrom/vim-markdown-folding'
 
 "config vim-template to use my templates folder
 let g:templates_directory = [ expand( "~/Code/dot-files/templates" ) ]
@@ -80,6 +81,10 @@ nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gc :Gcommit<CR>		
 nnoremap <Leader>gd :Gdiff<CR>		
 nnoremap <Leader>gs :Gstatus<CR>	
+
+" easier splitting
+nnoremap <Leader>- :split<CR>
+nnoremap <Leader>\ :vsplit<CR>
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -332,14 +337,12 @@ endfunction
 
 " markdown{{{
 function! SetMarkdownOps ()
-	" markdownLineBreak
-	" hi markdownH1
+	hi markdownLineBreak guibg='Dark Slate Blue' 
 	hi markdownH2 guifg='Dark Cyan'
 	hi markdownH3 guifg='Chartreuse'
-	hi markdownH4 guifg='Cornflower'
-	hi markdownH5 guifg='Dark Sea Green'
+	hi markdownH4 guifg='Pale Green'
+	hi markdownH5 guifg='Purple'
 	hi markdownH6 guifg='Light Blue'
-
 endfunction
 
 autocmd Filetype markdown call SetMarkdownOps()

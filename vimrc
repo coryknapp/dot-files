@@ -308,7 +308,7 @@ autocmd Filetype tex :call SetLatexOps ()
 
 " Python {{{
 function! SetPythonOps ()
-
+	syntax keyword pythonInclude self
 endfunction
 autocmd Filetype py :call SetPythonOps()
 " }}}
@@ -343,8 +343,6 @@ function! SetMarkdownOps ()
 	hi markdownH4 guifg='Pale Green'
 	hi markdownH5 guifg='Purple'
 	hi markdownH6 guifg='Light Blue'
-
-	syntax keyword pythonInclude self
 endfunction
 
 autocmd Filetype markdown call SetMarkdownOps()

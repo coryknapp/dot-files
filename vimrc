@@ -28,6 +28,13 @@ Plugin 'coryknapp/vim-color-flash'
 Plugin 'beyondmarc/glsl.vim'
 Plugin 'nelstrom/vim-markdown-folding'
 
+" some color schemes
+Plugin 'jacoborus/tender' 
+
+" enable tender lightline theme
+let g:tender_lightline = 1
+
+
 "config vim-template to use my templates folder
 let g:templates_directory = [ expand( "~/Code/dot-files/templates" ) ]
 
@@ -60,10 +67,6 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
-
-command! Hlg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
 
 " some remappings		
 let mapleader = "\<Space>"		
@@ -205,7 +208,7 @@ highlight link SyntasticStyleWarningSign SignColumn
 
 "configure lightline [https://github.com/itchyny/lightline.vim] {{{
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'tender',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] ]

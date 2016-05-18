@@ -27,13 +27,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'coryknapp/vim-color-flash'
 Plugin 'beyondmarc/glsl.vim'
 Plugin 'nelstrom/vim-markdown-folding'
-
-" some color schemes
-Plugin 'jacoborus/tender' 
-
-" enable tender lightline theme
-let g:tender_lightline = 1
-
+Plugin 'dhruvasagar/vim-markify'
 
 "config vim-template to use my templates folder
 let g:templates_directory = [ expand( "~/Code/dot-files/templates" ) ]
@@ -208,7 +202,7 @@ highlight link SyntasticStyleWarningSign SignColumn
 
 "configure lightline [https://github.com/itchyny/lightline.vim] {{{
 let g:lightline = {
-      \ 'colorscheme': 'tender',
+      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] ]

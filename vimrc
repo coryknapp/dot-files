@@ -29,6 +29,9 @@ Plugin 'beyondmarc/glsl.vim'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'dhruvasagar/vim-markify'
 
+" colors
+Plugin 'jacoborus/tender'
+
 "config vim-template to use my templates folder
 let g:templates_directory = [ expand( "~/Code/dot-files/templates" ) ]
 
@@ -70,6 +73,7 @@ map <leader>k :Explore<cr> " open netrw explorer.
 vnoremap <silent> y y`]		
 vnoremap <silent> p p`]		
 nnoremap <silent> p p`] 
+nnoremap <Leader>b <C-^>
 
 nnoremap <C-/> //<CR> 
 
@@ -202,7 +206,7 @@ highlight link SyntasticStyleWarningSign SignColumn
 
 "configure lightline [https://github.com/itchyny/lightline.vim] {{{
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'tender',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] ]

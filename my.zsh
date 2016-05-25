@@ -1,5 +1,4 @@
 export PATH="/usr/texbin":$PATH
-echo help
 function pfd() {
   osascript 2>/dev/null <<EOF
     tell application "Finder"

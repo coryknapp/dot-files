@@ -82,4 +82,12 @@ function mkcd {
   fi
 }
 
+function c {
+  if [ ! -n "$1" ]; then
+	cd ~ && ls	
+  else
+    cd $1 && ls
+  fi
+}
+
 alias tex='/Library/TeX/texbin/pdflatex'

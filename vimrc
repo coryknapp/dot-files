@@ -322,8 +322,9 @@ function! SetCppOps ()
 	syntax keyword cppPrintKeyword cout endl cin cerror
 	hi def link cppPrintKeyword Todo
 	"make a new line right after the last #include and move there
-	command! I call MoveToAfterLastInclude()
+	nnoremap <Leader>i :call MoveToAfterLastInclude()
 	let @t = "^d0$xa{0wi::hi"
+	nnoremap <Leader>a :call SwitchSourceHeader()<CR>
 endfunction
 autocmd Filetype cpp :call SetCppOps()
 autocmd Filetype h :call SetCppOps()
@@ -333,6 +334,15 @@ function! MoveToAfterLastInclude ()
 	execute "?#include"
 	normal o
 endfunction
+
+function! SwitchSourceHeader ()
+  if (expand ("%:e") == "cpp")
+    find %:t:r.h
+  else
+    find %:t:r.cpp
+  endif
+endfunction
+
 
 " }}}
 

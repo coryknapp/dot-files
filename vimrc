@@ -28,9 +28,13 @@ Plugin 'coryknapp/vim-color-flash'
 Plugin 'beyondmarc/glsl.vim'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'dhruvasagar/vim-markify'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " colors
 Plugin 'jacoborus/tender'
+
+"I suck at quitting vim properly, so this silences swap file exists messages
+set shortmess+=A
 
 "config vim-template to use my templates folder
 let g:templates_directory = [ expand( "~/Code/dot-files/templates" ) ]

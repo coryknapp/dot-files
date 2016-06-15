@@ -41,6 +41,10 @@ snippet /cout|pr/ "cout (smart)" !
 `!p snip.rv = getStdNamespaceIfNeeded()`cout << ${1:"foo"} << `!p snip.rv = getStdNamespaceIfNeeded()`endl;
 endsnippet
 
+snippet /coutij|prij/ "cout (smart)" !
+`!p snip.rv = getStdNamespaceIfNeeded()`cout << ${1:"foo"} << i << '\t' << j << `!p snip.rv = getStdNamespaceIfNeeded()`endl;
+endsnippet
+
 snippet clc "class with constructor, fields, setter and getters" b
 class `!p # here we generate the class name
 snip.rv = snip.basename or "untitled"` {

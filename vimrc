@@ -29,6 +29,7 @@ Plugin 'beyondmarc/glsl.vim'
 Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'dhruvasagar/vim-markify'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'coryknapp/vim-underscoreproject'
 
 " colors
 Plugin 'jacoborus/tender'
@@ -78,6 +79,8 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]		
 nnoremap <silent> p p`] 
 nnoremap <Leader>b <C-^>
+
+nnoremap <Leader>p :CtrlP<CR>
 
 nnoremap <C-/> //<CR> 
 
@@ -210,7 +213,6 @@ highlight link SyntasticStyleWarningSign SignColumn
 
 "configure lightline [https://github.com/itchyny/lightline.vim] {{{
 let g:lightline = {
-      \ 'colorscheme': 'tender',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] ]
@@ -224,6 +226,8 @@ let g:lightline = {
       \ 'separator': { 'left': '|', 'right': '<'},
       \ 'subseparator': { 'left': '|', 'right': '<' }
       \ }
+
+" }}}
 
 function! MyModified()
   if &filetype == "help"

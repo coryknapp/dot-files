@@ -331,6 +331,8 @@ function! SetCppOps ()
 	hi def link cppPrintKeyword Todo
 	"make a new line right after the last #include and move there
 	nnoremap <Leader>i :call MoveToAfterLastInclude()
+	
+	"transform a c++ member function prototype to a member function.
 	let @t = "^d0$xa{0wi::hi"
 	nnoremap <Leader>a :call SwitchSourceHeader()<CR>
 endfunction

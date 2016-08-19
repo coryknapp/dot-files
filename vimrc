@@ -31,6 +31,7 @@ Plugin 'dhruvasagar/vim-markify'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'coryknapp/vim-underscoreproject'
 Plugin 'keith/swift.vim'
+Plugin 'vim-scripts/TagHighlight'
 
 " colors
 Plugin 'jacoborus/tender'
@@ -94,6 +95,12 @@ nnoremap <Leader>gs :Gstatus<CR>
 " easier splitting
 nnoremap <Leader>- :split<CR>
 nnoremap <Leader>\ :vsplit<CR>
+
+"swap values from around a comma
+"from http://stackoverflow.com/questions/14727173/swap-items-in-comma-separated-list
+nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
+nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

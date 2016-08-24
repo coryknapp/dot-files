@@ -34,41 +34,19 @@ Plugin 'vim-scripts/TagHighlight'
 " colors
 Plugin 'jacoborus/tender'
 
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+colorscheme solarized
+
 "I suck at quitting vim properly, so this silences swap file exists messages
 set shortmess+=A
 
 "config vim-template to use my templates folder
 let g:templates_directory = [ expand( "~/Code/dot-files/templates" ) ]
 
-let g:syntastic_text_checkers = ['fucklint']
-
 let g:neocomplete#enable_at_startup = 1
-
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'LightSkyBlue'],
-    \ ['red',         'LightBlue'],
-    \ ]
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
 
 " some remappings		
 let mapleader = "\<Space>"		
@@ -78,9 +56,7 @@ map <leader>k :Explore<cr> " open netrw explorer.
 vnoremap <silent> y y`]		
 vnoremap <silent> p p`]		
 nnoremap <silent> p p`] 
-nnoremap <Leader>b <C-^>
-
-nnoremap <Leader>p :CtrlP<CR>
+nnoremap <Leader>b <C-^> " go to last buffer 
 
 nnoremap <C-/> //<CR> 
 
@@ -98,13 +74,6 @@ nnoremap <Leader>\ :vsplit<CR>
 "from http://stackoverflow.com/questions/14727173/swap-items-in-comma-separated-list
 nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
 nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
-
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-
-colorscheme solarized
 
 " fix stupid stuff about solarized
 hi clear SignColumn
@@ -188,6 +157,7 @@ autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell spelllang=en_us
 " add my own code snippets to the path
 let g:UltiSnipsSnippetDirectories=['UltiSnips',$HOME.'/Code/dot-files/snippets']
 
+" edit the snippet file for the current type
 command! Snip exec "split ".join(
 			\ [$HOME,'/Code/dot-files/snippets/',&filetype,'.snippets'], '' )
 
@@ -212,8 +182,8 @@ let g:syntastic_style_error_symbol = 'S'
 let g:syntastic_warning_symbol = 'W'
 let g:syntastic_style_warning_symbol = 's'
 
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticErrorSign Error
+highlight link SyntasticWarningSign Todo
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
 
@@ -229,31 +199,29 @@ let g:lightline = {
       \   'modified': 'MyModified',
       \   'filename': 'MyFilename'
       \ },
-      \ 'separator': { 'left': '|', 'right': '<'},
-      \ 'subseparator': { 'left': '|', 'right': '<' }
       \ }
 
 " }}}
 
 function! MyModified()
-  if &filetype == "help"
-    return ""
+  if &filetype ==? 'help'
+    return ''
   elseif &modified
-    return "✘"
+    return '✘'
   elseif &modifiable
-    return ""
+    return ''
   else
-    return ""
+    return ''
   endif
 endfunction
 
 function! MyReadonly()
-  if &filetype == "help"
-    return ""
+  if &filetype == 'help'
+    return ''
   elseif &readonly
-    return "read only"
+    return 'read only'
   else
-    return ""
+    return ''
   endif
 endfunction
 
@@ -272,7 +240,7 @@ endfunction
 "change background color 80 chars in
 "TODO make this work with solarized better
 highlight ColorColumn ctermbg=235 guibg=#00222a
-let &colorcolumn=join(range(81,999),",")
+let &colorcolumn=join(range(81,999),',')
 
 "java {{{
 function! SetJavaOps ()

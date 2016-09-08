@@ -1,5 +1,5 @@
 export PATH="/usr/texbin":$PATH
-export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
+export PATH="/Library/Frameworks/Mono.framework/Versions/Current/bin":${PATH}
 
 function pfd() {
   osascript 2>/dev/null <<EOF
@@ -54,6 +54,14 @@ function vsf(){
 #open the current folder in the finder
 alias f='open .'
 alias co='cd ~/Code'
+
+alias mzsh='v ~/Code/dot-files/my.zsh'
+
+alias 444='cd ~/Documents/School/CECS-444/'
+alias 475='cd ~/Documents/School/CECS-475'
+alias 478='cd ~/Documents/School/CECS-478/'
+alias 493='cd ~/Documents/School/CECS-493A/'
+alias 327='cd ~/Documents/School/CECS-327/'
 
 alias j='java'
 alias jc='javac'

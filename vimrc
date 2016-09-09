@@ -283,7 +283,6 @@ function! SetLatexOps ()
 	if &completefunc != '' | let &omnifunc=&completefunc | endif
 
 	set makeprg=/Library/TeX/texbin/pdflatex\ %\ &&\ open\ %<.pdf 
-	echo "Latex!"
 endfunction
 autocmd Filetype tex :call SetLatexOps ()
 

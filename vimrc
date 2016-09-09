@@ -302,6 +302,8 @@ function! SetCppOps ()
 	" take it out when after you're done testing/debugging
 	syntax keyword cppPrintKeyword cout endl cin cerror
 	hi def link cppPrintKeyword Todo
+	syntax match bad_spacing /\v  +| *\t+ +| +\t+ */
+	highlight bad_spacing guibg='Dark Slate Blue'
 	"make a new line right after the last #include and move there
 	nnoremap <Leader>i :call MoveToAfterLastInclude()
 	

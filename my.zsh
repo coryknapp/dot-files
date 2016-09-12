@@ -63,6 +63,8 @@ alias 478='cd ~/Documents/School/CECS-478/'
 alias 493='cd ~/Documents/School/CECS-493A/'
 alias 327='cd ~/Documents/School/CECS-327/'
 
+alias dnd='cd ~/Documents/D&D/'
+
 alias j='java'
 alias jc='javac'
 alias jd='javadoc -d docs'

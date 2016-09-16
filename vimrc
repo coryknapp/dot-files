@@ -28,6 +28,7 @@ Plugin 'beyondmarc/glsl.vim'
 Plugin 'dhruvasagar/vim-markify'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'coryknapp/vim-underscoreproject'
+Plugin 'coryknapp/vim-echo'
 Plugin 'keith/swift.vim'
 Plugin 'vim-scripts/TagHighlight'
 

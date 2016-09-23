@@ -288,8 +288,7 @@ function! SetLatexOps ()
 
 	nnoremap <leader>o1 ^i\1 <esc>
 	nnoremap <leader>o2 ^i<tab>\2 <esc>
-	nnoremap <leader>o3 ^i<tab><tab>\3:if expand("%") == ""|browse confirm w|else|confirm w|endif
-   	<esc>
+	nnoremap <leader>o3 ^i<tab><tab>\3 <esc>
 
 	"todo, protect the z buffer
 	vnoremap <leader>sb "zdi\textbf{<esc>"zpa}<esc>

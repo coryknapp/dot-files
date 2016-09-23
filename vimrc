@@ -282,6 +282,9 @@ function! SetLatexOps ()
 	set tw=79
 	" call ToggleWordWrap()
 	if &completefunc != '' | let &omnifunc=&completefunc | endif
+	nnoremap <leader>h1 ^i\section{<esc>$a}<esc>
+	nnoremap <leader>h2 ^i\subsection{<esc>$a}<esc>
+	nnoremap <leader>h3 ^i\subsection{<esc>$a}<esc>
 
 	set makeprg=/Library/TeX/texbin/pdflatex\ %\ &&\ open\ %<.pdf 
 endfunction

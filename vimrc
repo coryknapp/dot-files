@@ -31,6 +31,7 @@ Plugin 'coryknapp/vim-underscoreproject'
 Plugin 'coryknapp/vim-echo'
 Plugin 'keith/swift.vim'
 Plugin 'vim-scripts/TagHighlight'
+Plugin 'alvan/vim-closetag'
 
 " colors
 Plugin 'jacoborus/tender'
@@ -113,7 +114,11 @@ setlocal spell spelllang=en_us
 
 set foldmethod=marker
 
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'cpp', 'c', 'sql']
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'cpp', 'c', 'sql', 'cs']
+
+"highlight weird chars
+syntax match weird_chars /\v[°]/
+highlight weird_chars guibg='Dark Red'
 
 "quickly edit vimrc {{{
 "I keep a hard link to my vimrc at this path for git
@@ -294,6 +299,19 @@ function! SetLatexOps ()
 	vnoremap <leader>sb "zdi\textbf{<esc>"zpa}<esc>
 
 	set makeprg=/Library/TeX/texbin/pdflatex\ %\ &&\ open\ %<.pdf 
+
+	syntax keyword OutlineLevel1 way
+    syntax keyword OutlineLevel2 \\2
+    syntax keyword OutlineLevel3 \\3
+    syntax keyword OutlineLevel4 \\4
+    syntax keyword OutlineLevel5 \\5
+	
+	hi OutlineLevel1 guifg='Dark Cyan'
+	hi OutlineLevel2 guifg='Chartreuse'
+	hi OutlineLevel3 guifg='Pale Green'
+	hi OutlineLevel4 guifg='Purple'
+	hi OutlineLevel5 guifg='Light Blue'
+
 endfunction
 autocmd Filetype tex :call SetLatexOps ()
 
@@ -338,7 +356,7 @@ endfunction
 
 function! SwitchSourceHeader ()
   if (expand ("%:e") == "cpp")
-    find %:t:r.h
+    find %:t:r.hpp
   else
     find %:t:r.cpp
   endif
@@ -349,6 +367,9 @@ endfunction
 
 " markdown{{{
 function! SetMarkdownOps ()
+	
+	syntax match ftl_md_comment /\v\s*///// 
+
 	hi markdownLineBreak guibg='Dark Slate Blue' 
 	hi markdownH2 guifg='Dark Cyan'
 	hi markdownH3 guifg='Chartreuse'
@@ -360,3 +381,5 @@ endfunction
 autocmd Filetype markdown call SetMarkdownOps()
 
 " }}}
+
+let g:closetag_filenames = "*.html,*.xhtml,*.xml"

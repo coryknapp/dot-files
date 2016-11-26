@@ -344,6 +344,37 @@ function! SetCppOps ()
 	nnoremap <leader>P ^v$yOstd::cout << "<esc>pJi" << std::endl;<cr><esc>
 
 	nnoremap <Leader>a :call SwitchSourceHeader()<CR>
+
+	syntax match member_vars /m_\w\+/
+	hi member_vars	guifg=#9370DB
+
+	syntax match member_constant_vars /c_\w\+/
+	hi member_constant_vars	guifg=#7093DB
+
+	syn region	cLamdaHeader	start=/\v\[.+\]\(/ end=/)/
+	hi cLamdaHeader	guifg=#CC7799
+
+	syn match	curly_bracket	/\v(\{|\})/
+	hi curly_bracket	guifg=#06FA60
+
+	syn region constructor_init_list
+		\ start=/\v :\n/hs=e
+		\ end=/\v\{/he=e-1
+		\ contains=constructor_init_list_comment_b,constructor_init_list_comment_l
+
+	syn region constructor_init_list_comment_b
+		\ matchgroup=cCommentStart
+		\ start="/\*" end="\*/"
+
+	syn region	constructor_init_list_comment_l
+		\ start="//"
+		\ skip="\\$"
+		\ end="$"
+
+	hi constructor_init_list	guifg=#BABA60
+	hi def link constructor_init_list_comment_b		Comment
+	hi def link constructor_init_list_comment_l		Comment
+
 endfunction
 autocmd Filetype cpp :call SetCppOps()
 autocmd Filetype h :call SetCppOps()

@@ -1,6 +1,8 @@
 export PATH="/usr/texbin":$PATH
 export PATH="/Library/Frameworks/Mono.framework/Versions/Current/bin":${PATH}
 
+zsh private.zsh
+
 function pfd() {
   osascript 2>/dev/null <<EOF
     tell application "Finder"

@@ -6,3 +6,27 @@ snippet djmod "django model" b
 class ${1:Object}(models.Model):
     ${2:name} = models.CharField(max_length=200)
 endsnippet
+
+snippet view "django view" b
+@user_logged_in
+def ${1:new}_view(request):
+    """
+    ${3:General description}
+
+    Directed from:
+
+    Directs to:
+
+    Request object:
+
+    Associated html templates:
+    $2.html
+    
+    Side effects:
+    None 
+    """
+
+	${0}
+
+    return render(request, '${2:$1}.html', context)
+endsnippet	

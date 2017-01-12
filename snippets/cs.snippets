@@ -23,4 +23,8 @@ snippet xdoc "xml documentation tag" b
 /// </$1>
 endsnippet
 
-
+snippet tostring "ToString implementation" b
+public override string ToString(){
+	return string.Format("${2:{0}}", ${1});
+}
+endsnippet

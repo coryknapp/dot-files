@@ -1,0 +1,8 @@
+snippet make "all make" b
+all:
+	clang++\
+		${1:main.cpp}\
+		-std=c++14\
+		\
+		-o ${2:program}
+endsnippet

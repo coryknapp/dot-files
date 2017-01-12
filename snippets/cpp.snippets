@@ -37,15 +37,15 @@ def mixedCase(word):
 
 endglobal
 
-snippet /cout|pr/ "cout (smart)" !
+snippet /cout|pr/ "cout (smart)" b
 `!p snip.rv = getStdNamespaceIfNeeded()`cout << ${1:"foo"} << `!p snip.rv = getStdNamespaceIfNeeded()`endl;
 endsnippet
 
-snippet /coutv/ "cout a variable" !
-`!p snip.rv = getStdNamespaceIfNeeded()`cout << ${1:"foo = "} << $1 << `!p snip.rv = getStdNamespaceIfNeeded()`endl;
+snippet /coutv/ "cout a variable" b
+`!p snip.rv = getStdNamespaceIfNeeded()`cout << "${1:foo}" << $1 << `!p snip.rv = getStdNamespaceIfNeeded()`endl;
 endsnippet
 
-snippet /coutij|prij/ "cout i and j coords (smart)" !
+snippet /coutij|prij/ "cout i and j coords (smart)" b
 `!p snip.rv = getStdNamespaceIfNeeded()`cout << ${1:"foo"} << i << '\t' << j << `!p snip.rv = getStdNamespaceIfNeeded()`endl;
 endsnippet
 

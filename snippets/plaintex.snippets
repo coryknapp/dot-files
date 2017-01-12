@@ -1,0 +1,107 @@
+snippet doc "documentclass" !
+\documentclass[paper=letter, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\begin{document}
+	${1:some boring stuff, homework probably}>
+\end{document}
+endsnippet
+
+snippet out "outline" b
+\begin{outline}
+	${1:some boring stuff, homework probably}>
+\end{outline}
+endsnippet
+
+snippet oute "outline enumerate" b
+\begin{outline}[enumerate]
+	${1:some boring stuff, homework probably}>
+\end{outline}
+endsnippet
+
+
+snippet enum "enumerate"
+\begin{enumerate}
+	\item ${1:milk, eggs} 
+\end{enumerate}
+endsnippet
+
+snippet sec "section"
+\section{${1:my section}}
+$2
+endsnippet
+
+snippet ssec "subsection"
+\subsection{${1:my section}}
+$2
+endsnippet
+
+snippet sssa "subsubsection with alpha"
+\subsubsection*{(${1:a})}
+$2
+endsnippet
+
+snippet sp "split equation"
+\begin{equation}
+\begin{split}
+	${1:e} &= ${2:mc^2}\\\\
+\end{split}
+\end{equation}
+endsnippet
+
+snippet image "captioned image" b
+\begin{figure}[h]
+\caption{$1}
+\centering
+\includegraphics[width=0.5\textwidth]{$2}
+\end{figure}
+endsnippet
+
+snippet code "import a external code file" b
+\lstinputlisting[language=$1, caption=$2]{$3}
+endsnippet
+
+snippet codein "listing environment" b
+\begin{lstlisting}[language=$1, caption=$2]
+$3
+\end{lstlisting}
+endsnippet
+
+snippet b "text bold face"
+\textbf{$1}$2
+endsnippet
+
+snippet att "UML attribute" b
+\attribute{$1}
+endsnippet
+
+snippet headlist "listing header" b
+\usepackage{listings,xcolor,courier,mdframed,graphicx}
+\lstset{basicstyle=\footnotesize\ttfamily,
+breaklines=true,
+numbers=left,
+numberstyle=\tiny\color{gray},
+numbersep=5pt,
+firstnumber=0,
+captionpos={t},
+frame=lrtb,
+rulecolor=\color{black},
+framerule=0.5pt,
+columns=flexible
+}
+endsnippet
+
+snippet template "Homework template" b
+\documentclass[12pt]{article}
+
+\title{
+	${1:Assignment}
+}
+\author{
+	Cory Knapp
+}
+
+\begin{document}
+\maketitle
+$2
+
+\end{document}:
+endsnippet

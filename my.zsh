@@ -1,8 +1,11 @@
+#fix where LaTeX is broken on macOS
 export PATH="/usr/texbin":$PATH
 export PATH="/Library/Frameworks/Mono.framework/Versions/Current/bin":${PATH}
 
+#some stuffy I don't want to post on github, sorry
 zsh private.zsh
 
+#return the path of the top finder window
 function pfd() {
   osascript 2>/dev/null <<EOF
     tell application "Finder"
@@ -11,6 +14,7 @@ function pfd() {
 EOF
 }
 
+#return title of the foremost MacVim window 
 function topMacVimTitle() {
   osascript 2>/dev/null <<EOF
 tell application "MacVim"
@@ -19,10 +23,12 @@ end tell
 EOF
 }
 
+#set the working dir to the top finder window
 function cdf() {
   cd "$(pfd)"
 }
 
+#set the working dir to the top MacVim
 function cdv() {
 	#get the title of the macvim window
 	#match the stuff between the parentheses
@@ -32,6 +38,7 @@ function cdv() {
 	cd $dir
 }
 
+#open two files with a vertical split in MacVim
 function vvs() {
 	local cmd="mvim -c \"vsplit $2\" $1"
 	eval ${cmd}
@@ -39,6 +46,8 @@ function vvs() {
 
 alias v='mvim'
 alias vt='v -c "vsplit test.cpp"'
+
+#open vim with a Session file
 alias vs='v -S'
 
 function vsf(){
@@ -50,6 +59,7 @@ function vsf(){
 	else
 		echo "Sorry.  No Session file in $cwd."
 		echo "I'll move you there and you can do what you do, brother."
+		cd $cwd
  	fi
 }
 
@@ -57,8 +67,10 @@ function vsf(){
 alias f='open .'
 alias co='cd ~/Code'
 
+#open this file
 alias mzsh='v ~/Code/dot-files/my.zsh'
 
+#various shortcuts
 alias 444='cd ~/Documents/School/CECS-444/'
 alias 475='cd ~/Documents/School/CECS-475'
 alias 478='cd ~/Documents/School/CECS-478/'
@@ -79,12 +91,14 @@ alias gp='git push'
 alias gs='git status'
 alias gc='git commit -m'
 
-# push my dot-file commits
-alias dp='cd ~/Code/dot-files; git push; cd -'
 
 alias p='python'
 alias py='python'
 
+# push my dot-file commits
+alias dp='cd ~/Code/dot-files; git push; cd -'
+
+#make a directory and move there
 function mkcd {
   if [ ! -n "$1" ]; then
     echo "Enter a directory name"
@@ -95,6 +109,7 @@ function mkcd {
   fi
 }
 
+#change directory and list it
 function c {
   if [ ! -n "$1" ]; then
 	cd ~ && ls	
@@ -118,4 +133,5 @@ function man() {
 
 alias tex='/Library/TeX/texbin/pdflatex'
 
+#launch the django test server, wait three seconds, then show the homepage
 alias drs='python manage.py runserver &!(sleep 3 && open http://127.0.0.1:8000/)'

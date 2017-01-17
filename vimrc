@@ -338,10 +338,6 @@ function! SetCppOps ()
 	
 	"transform a c++ member function prototype to a member function.
 	let @t = "^d0$xa{0wi::hi"
-	"cout this line after it's called
-	nnoremap <leader>p ^v$yostd::cout << "<esc>pJi" << std::endl;<cr><esc>
-	"cout this line before it's called
-	nnoremap <leader>P ^v$yOstd::cout << "<esc>pJi" << std::endl;<cr><esc>
 
 	nnoremap <Leader>a :call SwitchSourceHeader()<CR>
 

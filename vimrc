@@ -116,7 +116,7 @@ set foldmethod=marker
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'java', 'cpp', 'c', 'sql', 'cs']
 
-"highlight weird chars
+"highlight weird chars. Sometimes they come from copying and pasting
 syntax match weird_chars /\v[°]/
 highlight weird_chars guibg='Dark Red'
 
@@ -125,7 +125,6 @@ highlight weird_chars guibg='Dark Red'
 command! Vrc edit $HOME/Code/dot-files/vimrc
 command! Vso so $HOME/.vimrc
 "}}}
-
 
 command! Ob Obsess
 
@@ -157,8 +156,6 @@ command! Gs :Gstatus
 autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell spelllang=en_us
 "}}}
 
-
-
 " UltiSnips config and related hotkey {{{
 " add my own code snippets to the path
 let g:UltiSnipsSnippetDirectories=['UltiSnips',$HOME.'/Code/dot-files/snippets']
@@ -173,6 +170,7 @@ let g:UltiSnipsJumpForwardTrigger = "<c-tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "}}}
 
+"syntastic settings {{{
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 0
@@ -192,6 +190,7 @@ highlight link SyntasticErrorSign Error
 highlight link SyntasticWarningSign Todo
 highlight link SyntasticStyleErrorSign SignColumn
 highlight link SyntasticStyleWarningSign SignColumn
+"}}}
 
 "configure lightline [https://github.com/itchyny/lightline.vim] {{{
 let g:lightline = {
@@ -206,8 +205,6 @@ let g:lightline = {
       \   'filename': 'MyFilename'
       \ },
       \ }
-
-" }}}
 
 function! MyModified()
   if &filetype ==? 'help'
@@ -241,7 +238,6 @@ function! MyFilename()
        \ ('' != MyModified() ? ' ' . MyModified() : '')
 endfunction
 " }}}
-
 
 "change background color 80 chars in
 "TODO make this work with solarized better

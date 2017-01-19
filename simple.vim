@@ -16,14 +16,14 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'coryknapp/vim-echo'
 
 " colors
-Plugin 'zanglg/nova.vim'
+Plugin 'NLKNguyen/papercolor-theme'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-set termguicolors
-colorscheme nova
+set background=light
+colorscheme PaperColor
 
 " some remappings		
 let mapleader = "\<Space>"		
@@ -100,18 +100,7 @@ highlight link SyntasticStyleWarningSign SignColumn
 "}}}
 
 "configure lightline [https://github.com/itchyny/lightline.vim] {{{
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'readonly': 'MyReadonly',
-      \   'modified': 'MyModified',
-      \   'filename': 'MyFilename'
-      \ },
-      \ }
+let g:lightline = { 'colorscheme': 'PaperColor' }
 
 function! MyModified()
   if &filetype ==? 'help'

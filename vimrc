@@ -61,6 +61,7 @@ nnoremap <silent> p p`]
 nnoremap <Leader>b <C-^> " go to last buffer 
 
 nnoremap <C-/> //<CR> 
+inoremap <C-Space> <esc>:CtrlPMixed<CR>
 
 " remapping for git (fugitive)
 nnoremap <Leader>gw :Gwrite<CR>		

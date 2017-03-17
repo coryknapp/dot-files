@@ -91,6 +91,7 @@ alias gp='git push'
 alias gs='git status'
 alias gc='git commit -m'
 
+alias add='git add'
 
 alias p='python'
 alias py='python'

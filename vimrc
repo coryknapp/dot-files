@@ -30,8 +30,8 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'coryknapp/vim-underscoreproject'
 Plugin 'coryknapp/vim-echo'
 Plugin 'keith/swift.vim'
-Plugin 'vim-scripts/TagHighlight'
-Plugin 'alvan/vim-closetag'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'posva/vim-vue'
 
 " colors
 Plugin 'jacoborus/tender'

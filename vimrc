@@ -195,6 +195,7 @@ highlight link SyntasticStyleWarningSign SignColumn
 
 "configure lightline [https://github.com/itchyny/lightline.vim] {{{
 let g:lightline = {
+	  \ 'colorscheme': 'tender',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'filename' ] ]

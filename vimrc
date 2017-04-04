@@ -40,7 +40,7 @@ Plugin 'jacoborus/tender'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme solarized
+colorscheme tender
 
 "I suck at quitting vim properly, so this silences swap file exists messages
 set shortmess+=A

@@ -241,11 +241,6 @@ function! MyFilename()
 endfunction
 " }}}
 
-"change background color 80 chars in
-"TODO make this work with solarized better
-highlight ColorColumn ctermbg=235 guibg=#00222a
-let &colorcolumn=join(range(81,999),',')
-
 "java {{{
 function! SetJavaOps ()
 	" set up eclim

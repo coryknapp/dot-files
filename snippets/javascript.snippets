@@ -1,5 +1,11 @@
-snippet func* "function" b
-function ${1:name)(${2}){
+snippet func "function" b
+function ${1:name}(${2}){
 	${3}
+}
+endsnippet
+
+snippet fori "for index" b
+for(var i=0; i<${1:array}.length; i++){
+	${2}
 }
 endsnippet

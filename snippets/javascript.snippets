@@ -4,6 +4,14 @@ function ${1:name}(${2}){
 }
 endsnippet
 
+snippet logs "log string" b
+console.log("${1}");
+endsnippet
+
+snippet logv "log variable" b
+console.log("$1", ${1:i});
+endsnippet
+
 snippet fori "for index" b
 for(var i=0; i<${1:array}.length; i++){
 	${2}

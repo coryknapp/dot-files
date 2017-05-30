@@ -32,6 +32,8 @@ Plugin 'coryknapp/vim-echo'
 Plugin 'keith/swift.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'posva/vim-vue'
+Plugin 'w0rp/ale'
+
 
 " colors
 Plugin 'jacoborus/tender'
@@ -96,6 +98,10 @@ set guioptions-=L  "remove left-hand scroll bar
 
 set nobackup
 set nowritebackup
+
+filetype on
+filetype plugin on
+filetype indent on
 
 set shiftwidth=4
 set tabstop=4

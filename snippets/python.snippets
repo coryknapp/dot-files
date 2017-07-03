@@ -1,5 +1,15 @@
 snippet pr "print" b
-print(${0})
+print(${1})
+endsnippet
+
+snippet db "Guarded debug log" b
+if DEBUG_LOGGING:
+	print(${1})
+endsnippet
+
+snippet main "if __main__ guard" b
+if __name__ == "__main__":
+	${1}
 endsnippet
 
 snippet djmod "django model" b

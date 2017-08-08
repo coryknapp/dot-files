@@ -15,7 +15,6 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neoinclude.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
-Plugin 'scrooloose/syntastic'
 Plugin 'dbakker/vim-lint'
 Plugin 'wellle/targets.vim'
 Plugin 'aperezdc/vim-template'
@@ -79,9 +78,6 @@ nnoremap <Leader>\ :vsplit<CR>
 "from http://stackoverflow.com/questions/14727173/swap-items-in-comma-separated-list
 nnoremap <silent> gl "_yiw:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o>/\w\+\_W\+<CR><c-l>
 nnoremap <silent> gh "_yiw?\w\+\_W\+\%#<CR>:s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR><c-o><c-l>
-
-" fix stupid stuff about solarized
-hi clear SignColumn
 
 "turn spelling on by default
 set spell spelllang=en_us
@@ -177,28 +173,6 @@ let g:UltiSnipsJumpForwardTrigger = "<c-tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "}}}
 
-"syntastic settings {{{
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-
-let g:syntastic_vim_checkers = ['vint']
-let g:syntastic_python_checkers = ['python', 'pylint', 'pep257']
-
-let g:syntastic_error_symbol = 'X'
-let g:syntastic_style_error_symbol = 'S'
-let g:syntastic_warning_symbol = 'W'
-let g:syntastic_style_warning_symbol = 's'
-
-highlight link SyntasticErrorSign Error
-highlight link SyntasticWarningSign Todo
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
-"}}}
-
 "configure lightline [https://github.com/itchyny/lightline.vim] {{{
 let g:lightline = {
 	  \ 'colorscheme': 'tender',
@@ -255,12 +229,7 @@ function! SetJavaOps ()
 	
 	" i like to run my java stuff in the apple terminal instead of in vim
 	command! Ej call EclimRunInAppleTerminal()
-	"set up syntastic
-	let g:syntastic_java_checkers = ['javac']
 	
-	" turn on eclim syntax checking, because we use syntastic
-	let g:EclimFileTypeValidate = 1
-
 	" set error scanning and correcting
 	imap <F12> :lnext<Enter>
 	imap <F11> :lprev<Enter>

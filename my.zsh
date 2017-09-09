@@ -38,6 +38,9 @@ function cdv() {
 	cd $dir
 }
 
+#
+alias not="osascript -e 'display notification \"Shell task complete\"'"
+
 #open two files with a vertical split in MacVim
 function vvs() {
 	local cmd="mvim -c \"vsplit $2\" $1"
@@ -61,6 +64,11 @@ function vsf(){
 		echo "I'll move you there and you can do what you do, brother."
 		cd $cwd
  	fi
+}
+
+#highlight a pattern in stdout
+function hl() {
+	eval("ack --color --passthru $1")
 }
 
 #open the current folder in the finder

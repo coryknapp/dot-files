@@ -8,31 +8,129 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Git wrapper
 Plugin 'tpope/vim-fugitive'
+" vim-fugitive settings {{{
+	" remapping for git (fugitive)
+	nnoremap <Leader>gw :Gwrite<CR>		
+	nnoremap <Leader>gc :Gcommit<CR>		
+	nnoremap <Leader>gd :Gdiff<CR>		
+	nnoremap <Leader>gs :Gstatus<CR>	
+	" turn on spell check for git commit messages 
+	autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell spelllang=en_us
+"}}}
+
+" statusline enhancer
 Plugin 'itchyny/lightline.vim'
+" lightline.vim settings {{{
+	let g:lightline = {
+		  \ 'colorscheme': 'tender',
+		  \ 'active': {
+		  \   'left': [ [ 'mode', 'paste' ],
+		  \             [ 'fugitive', 'filename' ] ]
+		  \ },
+		  \ 'component_function': {
+		  \   'fugitive': 'MyFugitive',
+		  \   'readonly': 'MyReadonly',
+		  \   'modified': 'MyModified',
+		  \   'filename': 'MyFilename'
+		  \ },
+		  \ }
+
+	function! MyModified()
+	  if &filetype ==? 'help'
+		return ''
+	  elseif &modified
+		return '✘'
+	  elseif &modifiable
+		return ''
+	  else
+		return ''
+	  endif
+	endfunction
+
+	function! MyReadonly()
+	  if &filetype == 'help'
+		return ''
+	  elseif &readonly
+		return 'read only'
+	  else
+		return ''
+	  endif
+	endfunction
+
+	function! MyFugitive()
+	  return exists('*fugitive#head') ? fugitive#head() : ''
+	endfunction
+
+	function! MyFilename()
+	  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+		   \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+		   \ ('' != MyModified() ? ' ' . MyModified() : '')
+	endfunction
+" }}}
+
+" Snippets
 Plugin 'SirVer/ultisnips'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neoinclude.vim'
+" ultisnips settings {{{
+	" add my own code snippets to the path
+	let g:UltiSnipsSnippetDirectories=['UltiSnips',$HOME.'/Code/dot-files/snippets']
+
+	" edit the snippet file for the current type
+	command! Snip exec "split ".join(
+				\ [$HOME,'/Code/dot-files/snippets/',&filetype,'.snippets'], '' )
+
+	" better key bindings for UltiSnipsExpandTrigger
+	let g:UltiSnipsExpandTrigger = "<c-CR>"
+	let g:UltiSnipsJumpForwardTrigger = "<c-tab>"
+	let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" }}}
+
+" Useful snippets
 Plugin 'honza/vim-snippets'
-Plugin 'ervandew/supertab'
+
+" Autocomplete
+Plugin 'Shougo/deoplete.nvim'
+
+" lint vimscript
 Plugin 'dbakker/vim-lint'
+
+" Vim plugin that provides additional text objects
 Plugin 'wellle/targets.vim'
+
+" templates
 Plugin 'aperezdc/vim-template'
+" vim-template' settings {{{
+	" config vim-template to use my templates folder
+	let g:templates_directory = [ expand( "~/Code/dot-files/templates" ) ]
+" }}}
+
+" Comment targets
 Plugin 'tpope/vim-commentary'
+
+" Tools for writing vimscript
 Plugin 'tpope/vim-scriptease'
+
+" Improved sessions
 Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-markdown'
+
+" Show color under cursor
 Plugin 'coryknapp/vim-color-flash'
-Plugin 'beyondmarc/glsl.vim'
-Plugin 'dhruvasagar/vim-markify'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'coryknapp/vim-underscoreproject'
+
+" Printing
 Plugin 'coryknapp/vim-echo'
+
+" Fuzzy file, buffer, mru, tag, etc finder.
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" For swift language
 Plugin 'keith/swift.vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'posva/vim-vue'
+
+" Check syntax in Vim asynchronously
 Plugin 'w0rp/ale'
 
+" Autocomplete for swift
+Plugin 'mitsuse/autocomplete-swift'
 
 " colors
 Plugin 'jacoborus/tender'
@@ -46,8 +144,6 @@ colorscheme tender
 "I suck at quitting vim properly, so this silences swap file exists messages
 set shortmess+=A
 
-"config vim-template to use my templates folder
-let g:templates_directory = [ expand( "~/Code/dot-files/templates" ) ]
 
 let g:neocomplete#enable_at_startup = 1
 
@@ -64,15 +160,12 @@ nnoremap <Leader>b <C-^> " go to last buffer
 nnoremap <C-/> //<CR> 
 inoremap <C-Space> <esc>:CtrlPMixed<CR>
 
-" remapping for git (fugitive)
-nnoremap <Leader>gw :Gwrite<CR>		
-nnoremap <Leader>gc :Gcommit<CR>		
-nnoremap <Leader>gd :Gdiff<CR>		
-nnoremap <Leader>gs :Gstatus<CR>	
-
 " easier splitting
 nnoremap <Leader>- :split<CR>
 nnoremap <Leader>\ :vsplit<CR>
+
+" undo the auto inserted comments
+inoremap <C-u> <esc> xxa
 
 "swap values from around a comma
 "from http://stackoverflow.com/questions/14727173/swap-items-in-comma-separated-list
@@ -94,10 +187,6 @@ set guioptions-=L  "remove left-hand scroll bar
 
 set nobackup
 set nowritebackup
-
-filetype on
-filetype plugin on
-filetype indent on
 
 set shiftwidth=4
 set tabstop=4
@@ -146,79 +235,6 @@ nnoremap ˙ :bp<CR>
 
 "option-l on mac os x go to next buffer
 nnoremap ¬ :bf<CR>
-" }}}
-
-" fugitive config {{{
-command! Gc :Gcommit
-command! Gw :Gwrite
-command! Gr :Gread
-command! Gd :Gdiff
-command! Gs :Gstatus
-
-" turn on spell check for git commit messages 
-autocmd BufNewFile,BufRead *COMMIT_EDITMSG setlocal spell spelllang=en_us
-"}}}
-
-" UltiSnips config and related hotkey {{{
-" add my own code snippets to the path
-let g:UltiSnipsSnippetDirectories=['UltiSnips',$HOME.'/Code/dot-files/snippets']
-
-" edit the snippet file for the current type
-command! Snip exec "split ".join(
-			\ [$HOME,'/Code/dot-files/snippets/',&filetype,'.snippets'], '' )
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<c-CR>"
-let g:UltiSnipsJumpForwardTrigger = "<c-tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-"}}}
-
-"configure lightline [https://github.com/itchyny/lightline.vim] {{{
-let g:lightline = {
-	  \ 'colorscheme': 'tender',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'MyFugitive',
-      \   'readonly': 'MyReadonly',
-      \   'modified': 'MyModified',
-      \   'filename': 'MyFilename'
-      \ },
-      \ }
-
-function! MyModified()
-  if &filetype ==? 'help'
-    return ''
-  elseif &modified
-    return '✘'
-  elseif &modifiable
-    return ''
-  else
-    return ''
-  endif
-endfunction
-
-function! MyReadonly()
-  if &filetype == 'help'
-    return ''
-  elseif &readonly
-    return 'read only'
-  else
-    return ''
-  endif
-endfunction
-
-function! MyFugitive()
-  return exists('*fugitive#head') ? fugitive#head() : ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
 " }}}
 
 "java {{{
@@ -288,6 +304,7 @@ autocmd Filetype tex :call SetLatexOps ()
 " Python {{{
 function! SetPythonOps ()
 	syntax keyword pythonInclude self
+	let g:syntastic_python_checkers = ['flake8']
 endfunction
 autocmd Filetype py :call SetPythonOps()
 " }}}
@@ -363,7 +380,7 @@ endfunction
 " markdown{{{
 function! SetMarkdownOps ()
 	
-	syntax match ftl_md_comment /\v\s*///// 
+	syntax match ftl_md_comment /\v\s*/////
 
 	hi markdownLineBreak guibg='Dark Slate Blue' 
 	hi markdownH2 guifg='Dark Cyan'

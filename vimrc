@@ -122,6 +122,10 @@ Plugin 'coryknapp/vim-echo'
 
 " Fuzzy file, buffer, mru, tag, etc finder.
 Plugin 'ctrlpvim/ctrlp.vim'
+" ctrlp settings {{{
+	nnoremap <Leader>p :CtrlPMixed<CR>		
+
+" }}}
 
 " For swift language
 Plugin 'keith/swift.vim'

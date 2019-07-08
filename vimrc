@@ -136,6 +136,9 @@ Plugin 'w0rp/ale'
 " Autocomplete for swift
 Plugin 'mitsuse/autocomplete-swift'
 
+Plugin 'mattn/emmet-vim'
+let g:user_emmet_leader_key='<C-Z>'
+
 " colors
 Plugin 'jacoborus/tender'
 

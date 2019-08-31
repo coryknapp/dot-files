@@ -81,7 +81,7 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "i", function()
 end)
 
 -- move window to other screen
-hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "i", function()
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, ";", function()
   local win = hs.window.focusedWindow()
   local screen = win:screen()
   win:moveToScreen(screen:next())  

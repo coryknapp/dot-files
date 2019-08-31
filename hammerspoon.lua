@@ -80,6 +80,13 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "i", function()
   win:setFrame(f)
 end)
 
+-- move window to other screen
+hs.hotkey.bind({"cmd", "alt", "ctrl", "shift"}, "i", function()
+  local win = hs.window.focusedWindow()
+  local screen = win:screen()
+  win:moveToScreen(screen:next())  
+end)
+
 -- }}}
 
 -- Making Vim handy -- {{{
@@ -120,7 +127,7 @@ genericToVimScriptString = [[on run
 	end tell
 end run]]
 
-hs.hotkey.bind({"ctrl"}, "o", function()
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "o", function()
 	local frontAppBundleId = hs.application.frontmostApplication():bundleID()
 	hs.alert.show( frontAppBundleId )
 	if frontAppBundleId == "com.apple.dt.Xcode" then

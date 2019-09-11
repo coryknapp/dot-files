@@ -1,9 +1,10 @@
 #fix where LaTeX is broken on macOS
 export PATH="/usr/texbin":$PATH
 export PATH="/Library/Frameworks/Mono.framework/Versions/Current/bin":${PATH}
+export PATH="~/Code/dot-files/scripts":${PATH}
 
-#some stuffy I don't want to post on github, sorry
-zsh private.zsh
+#alias my scripts
+alias cpb='bash strip_safari_copy_mark_up.sh'
 
 #return the path of the top finder window
 function pfd() {

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+marks=xxx,aaamarksRegex=`echo "($marks)" | sed -r 's/,/|/g'`marksMessage=`echo "$marks" | sed -r 's/,/ or /g'`if git diff --staged | egrep -q "^\+.*$marksRegex"; then    echo "you forgot to remove a line containing $marksMessage!"    echo "you can forcefully commit using \"commit -n\""    exit 1fi
+

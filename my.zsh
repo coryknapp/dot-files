@@ -100,6 +100,9 @@ alias py='python'
 # push my dot-file commits
 alias dp='cd ~/Code/dot-files; git push; cd -'
 
+# install my pre-commit in the .git dir
+alias install-pre-commit='cp  ~/Code/dot-files/pre-commit .git/hooks/pre-commit'
+
 #make a directory and move there
 function mkcd {
   if [ ! -n "$1" ]; then

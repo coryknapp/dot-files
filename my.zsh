@@ -3,10 +3,6 @@ export PATH="/usr/texbin":$PATH
 export PATH="/Library/Frameworks/Mono.framework/Versions/Current/bin":${PATH}
 export PATH="~/Code/dot-files/scripts":${PATH}
 
-#alias my scripts
-#for clean pasteboard
-alias cpb='bash strip_safari_copy_mark_up.sh'
-
 #return the path of the top finder window
 function pfd() {
   osascript 2>/dev/null <<EOF

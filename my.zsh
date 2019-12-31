@@ -40,6 +40,8 @@ function cdv() {
 	cd $dir
 }
 
+alias vsc='open -a "Visual Studio Code.app" .'
+
 # && and this on to a command to get a noti when it's done.
 alias noti="osascript -e 'display notification \"Shell task complete\"'"
 
@@ -51,6 +53,9 @@ function vvs() {
 
 alias v='mvim'
 alias vt='v -c "vsplit test.cpp"'
+
+#strip anything from the clipboard other then plain text
+alias st='pbpaste | pbcopy'
 
 #open vim with a Session file
 alias vs='v -S'

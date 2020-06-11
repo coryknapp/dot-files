@@ -14,6 +14,38 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 hs.alert.show("Config loaded")
 
 
+-- map mouse buttons 4 and 5 to copy paste {{{
+
+copyFunc = function()
+	hs.eventtap.keyStroke({"cmd"}, "c")
+end
+
+pasteFunc = function()
+	hs.eventtap.keyStroke({"cmd"}, "v")
+end
+
+
+copyTap = hs.eventtap.new( {hs.eventtap.event.types.otherMouseUp}, function(e)
+	num = e:getProperty(hs.eventtap.event.properties.mouseEventButtonNumber)
+	if num == 3 then
+		copyFunc()	
+	elseif num == 4 then
+		pasteFunc()	
+	else
+		e:post()
+	end
+end)
+copyTap:start();
+
+-- }}}
+
+-- getting the displays set up for remoting in for messages -- " {{{
+hs.hotkey.bind({}, "f1", function()
+	hs.alert.show("f1 pressed")
+end)
+
+-- }}}
+
 -- window moving/organizing stuff -- " {{{
 -- left and right window half
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "h", function()
@@ -152,4 +184,4 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "o", function()
 
 end)
 
--- }}}
+-- }}}hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(hs.eventtap.middleClick(

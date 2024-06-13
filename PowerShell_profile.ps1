@@ -6,7 +6,7 @@ $scriptPaths = @(
 foreach ($scriptPath in $scriptPaths) {
     if (Test-Path $scriptPath) {
         Write-Host -ForegroundColor blue "Running: $scriptPath"
-        & $scriptPath
+        Import-Module $scriptPath
     }
 }
 

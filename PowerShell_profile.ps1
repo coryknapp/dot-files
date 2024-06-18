@@ -1,12 +1,19 @@
 #Stuff to keep out of public repo
 $scriptPaths = @(
-    "$HOME\Code\knapp-gainwell-tools\knapp-gainwell-tools.ps1"
+    "$HOME\Code\knapp-gainwell-tools\knapp-gainwell-tools.ps1",
+	"$HOME\Code\dot-files\B.ps1"
 )
+
+$clockIcons = @( [char]0xf017, [char]0xf017 )
 
 foreach ($scriptPath in $scriptPaths) {
     if (Test-Path $scriptPath) {
-        Write-Host -ForegroundColor blue "Running: $scriptPath"
-        Import-Module $scriptPath
+        Write-Host -NoNewline -ForegroundColor blue "Loading: $scriptPath"
+        $executionTime = Measure-Command {
+			. $scriptPath
+		}
+		Write-Host -NoNewline " $($clockIcons[0])"
+		Write-Host -ForegroundColor darkblue " $($executionTime.TotalMilliseconds) ms"
     }
 }
 
@@ -117,6 +124,6 @@ Function Copy-Folder([string]$source, [string]$destination, [bool]$recursive) {
 
 # # fancy prompt
 Import-Module -Name posh-git
-oh-my-posh init pwsh --config "C:\Users\cknapp\Code\dot-files\hotstick.ck.omp.json"| Invoke-Expression
+oh-my-posh init pwsh --config "$HOME\Code\dot-files\hotstick.ck.omp.json"| Invoke-Expression
 
 $env:POSH_GIT_ENABLED = $true

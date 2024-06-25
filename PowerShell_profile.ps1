@@ -38,6 +38,20 @@ function np {
     }
 }
 
+function stash {
+    param (
+        [string]$message
+    )
+	
+	if (-not $message) {
+        $message = Read-Host -Prompt "Message?"
+    }
+	
+	$command = "git stash push --include-untracked --message ""$message"""
+	Write-Host -ForegroundColor DarkCyan $command
+	Invoke-Expression $command
+}
+
 function Kill-Port{
     param (
         [string]$Port

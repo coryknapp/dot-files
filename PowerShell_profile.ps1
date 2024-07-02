@@ -17,8 +17,12 @@ foreach ($scriptPath in $scriptPaths) {
     }
 }
 
+function p {
+    powershell
+}
+
 function cm {
-    python ~\Code\dot-files\scripts\clipboard-manipulator.py $args
+    python $home\Code\dot-files\scripts\clipboard-manipulator.py $args
 }
 
 function np {

@@ -21,9 +21,19 @@
           },
           "style": "diamond",
           "template": " {{ .Path }} ",
-          "trailing_diamond": "\ue0b0",
           "type": "path"
         },
+		{
+			"type": "sysinfo",
+			"powerline_symbol": "",
+			"foreground": "#ffffff",
+			"background": "#8f43f3",
+			"template": "{{ round .PhysicalPercentUsed .Precision }}%",
+			"properties": {
+				"precision": 2
+			},
+			"style": "powerline"
+		},
         {
           "background": "#01C5FF",
           "background_templates": [

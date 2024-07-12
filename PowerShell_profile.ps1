@@ -66,6 +66,34 @@ function Kill-Port{
 	}
 }
 
+function Windows-Line-Endings{
+    param (
+        [string]$inputFilePath
+    )
+
+	$content = Get-Content -Raw -Path $inputFilePath
+
+	# Replace LF with CRLF
+	$content = $content -replace "`n", "`r`n"
+
+	# Write the modified content back to the file
+	Set-Content -Path $inputFilePath -Value $content
+}
+
+function Unix-Line-Endings{
+    param (
+        [string]$inputFilePath
+    )
+
+	$content = Get-Content -Raw -Path $inputFilePath
+
+	# Replace LF with CRLF
+	$content = $content -replace "`r`n", "`n"
+
+	# Write the modified content back to the file
+	Set-Content -Path $inputFilePath -Value $content
+}
+
 function remove-older-stashes {
     param (
         [int]$Index

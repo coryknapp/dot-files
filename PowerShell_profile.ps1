@@ -1,7 +1,8 @@
 #Stuff to keep out of public repo
 $scriptPaths = @(
     "$HOME\Code\knapp-gainwell-tools\knapp-gainwell-tools.ps1",
-	"$HOME\Code\dot-files\B.ps1"
+	"$HOME\Code\dot-files\B.ps1",
+	"$HOME\Code\dot-files\Line-Endings.ps1"
 )
 
 $clockIcons = @( [char]0xf017, [char]0xf017 )
@@ -64,34 +65,6 @@ function Kill-Port{
 	if ($Process) {
 		Stop-Process -Id $Process.OwningProcess -Force
 	}
-}
-
-function Windows-Line-Endings{
-    param (
-        [string]$inputFilePath
-    )
-
-	$content = Get-Content -Raw -Path $inputFilePath
-
-	# Replace LF with CRLF
-	$content = $content -replace "`n", "`r`n"
-
-	# Write the modified content back to the file
-	Set-Content -Path $inputFilePath -Value $content
-}
-
-function Unix-Line-Endings{
-    param (
-        [string]$inputFilePath
-    )
-
-	$content = Get-Content -Raw -Path $inputFilePath
-
-	# Replace LF with CRLF
-	$content = $content -replace "`r`n", "`n"
-
-	# Write the modified content back to the file
-	Set-Content -Path $inputFilePath -Value $content
 }
 
 function remove-older-stashes {

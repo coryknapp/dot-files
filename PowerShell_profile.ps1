@@ -91,6 +91,9 @@ function remove-older-stashes {
 	Write-Host -ForegroundColor Blue "$remainingCount stashes remaining" 
 }
 
+function copy-current-branch-name {
+	git branch --show-current | Set-Clipboard
+}
 
 ####################################################################################################
 # This function copies a folder (and optionally, its subfolders)

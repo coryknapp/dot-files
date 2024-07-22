@@ -19,7 +19,7 @@ foreach ($scriptPath in $scriptPaths) {
 }
 
 function p {
-    powershell
+    . $PROFILE
 }
 
 function cm {

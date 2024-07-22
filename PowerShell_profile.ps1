@@ -22,6 +22,14 @@ function p {
     . $PROFILE
 }
 
+function ep {
+    np $PROFILE
+}
+
+function cdot {
+    Set-Location $HOME\Code\dot-files
+}
+
 function cm {
     python $home\Code\dot-files\scripts\clipboard-manipulator.py $args
 }

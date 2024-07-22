@@ -1,3 +1,4 @@
 #install modules
 
-Install-Module PSReadLine
+Install-Module PsReadline -Force
+Install-Module -Name BurntToast

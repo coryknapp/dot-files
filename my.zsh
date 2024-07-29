@@ -1,3 +1,8 @@
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+    #not sure why, but my custom omp doesn't work on MacOs
+    eval "$(oh-my-posh init zsh --config ~/Code/dot-files/hotstick.ck.omp.json )"
+fi
+
 #fix where LaTeX is broken on macOS
 export PATH="/usr/texbin":$PATH
 export PATH="/Library/Frameworks/Mono.framework/Versions/Current/bin":${PATH}
@@ -14,10 +19,10 @@ EOF
 
 #return title of the foremost MacVim window 
 function topMacVimTitle() {
-  osascript 2>/dev/null <<EOF
-tell application "MacVim"
-	return name of window 1
-end tell
+    osascript 2>/dev/null <<EOF
+    tell application "MacVim"
+        return name of window 1
+        end tell
 EOF
 }
 
@@ -69,25 +74,12 @@ function vsf(){
  	fi
 }
 
-#highlight a pattern in stdout
-function hl() {
-	eval("ack --color --passthru $1")
-}
-
 #open the current folder in the finder
 alias f='open .'
 alias co='cd ~/Code'
 
 #open this file
 alias mzsh='v ~/Code/dot-files/my.zsh'
-
-alias j='java'
-alias jc='javac'
-alias jd='javadoc -d docs'
-
-alias eclim='/Applications/Eclipse.app/Contents/Eclipse/eclimd'
-
-alias usb='system_profiler SPUSBDataType'
 
 alias gp='git push'
 alias gs='git status'
@@ -136,8 +128,3 @@ function man() {
 		LESS_TERMCAP_us=$(printf "\e[1;32m") \
 			man "$@"
 }
-
-alias tex='/Library/TeX/texbin/pdflatex'
-
-#launch the django test server, wait three seconds, then show the homepage
-alias drs='python manage.py runserver &!(sleep 3 && open http://127.0.0.1:8000/)'

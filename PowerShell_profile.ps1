@@ -18,8 +18,13 @@ foreach ($scriptPath in $scriptPaths) {
     }
 }
 
+# list user defined functions
+function pfunc {
+	Get-Command -CommandType Function | Where-Object { -not [string]::IsNullOrEmpty($_.Source) -eq $false } | Select-Object -Property Name
+}
+
 function p {
-    . $PROFILE
+    powershell
 }
 
 function ep {
@@ -73,6 +78,10 @@ function Kill-Port{
 	if ($Process) {
 		Stop-Process -Id $Process.OwningProcess -Force
 	}
+}
+
+function Restart-Visual-Studio{
+	taskkill /F /IM devenv.exe
 }
 
 function remove-older-stashes {

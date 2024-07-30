@@ -99,7 +99,7 @@ function Git-Revert-File{
 	Write-Host "Reverting $filePath"
 	
     if (-not $Dry ) {
-		#git reset HEAD $filePath
-		#git checkout -- $filePath
+		git reset HEAD $filePath
+		git checkout -- $filePath
 	}
 }

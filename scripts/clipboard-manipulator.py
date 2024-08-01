@@ -35,7 +35,7 @@ def git_branch(s):
 
 def standup_summery(s):
   """
-  Standup summery tmeplate based on text copied from ADO
+  Standup summery template based on text copied from ADO
   """
   # split into lines
   s = s.split("\n")
@@ -95,7 +95,6 @@ command_handlers = {
     'h': print_help,
     'c': camel_case,
     'C': Camel_case,
-    'g': git_branch,
     'su': standup_summery,
     'bn': git_branch,
     '/.': slash_dot,

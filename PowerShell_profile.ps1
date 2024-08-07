@@ -25,6 +25,7 @@ function pfunc {
 
 function p {
     powershell
+	#& "C:\Program Files\WindowsApps\Microsoft.PowerShell_7.4.4.0_x64__8wekyb3d8bbwe\pwsh.exe"
 }
 
 function ep {
@@ -68,6 +69,14 @@ function stash {
 	$command = "git stash push --include-untracked --message ""$message"""
 	Write-Host -ForegroundColor DarkCyan $command
 	Invoke-Expression $command
+}
+
+function which {
+	param (
+		[string]$Command
+	)
+	
+	echo (Get-Command $Command).Source
 }
 
 function Kill-Port{

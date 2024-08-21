@@ -2,7 +2,17 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
         "orange": "#FFA500",
-        "warning": "p:orange"
+		"purple": "#FF00FF",
+		"pink": "#ff69b4",
+		"blue": "#01C5FF",
+		"green": "#00FF50",
+		
+        "warning": "p:orange",
+		
+		"path-background":"p:purple",
+		
+		"git-dirty-background":"p:green",
+		"git-clean-background":"p:blue"
 	},
   "blocks": [
     {
@@ -15,13 +25,12 @@
           "type": "root"
         },
         {
-          "background": "#ff69b4",
+          "background": "p:path-background",
           "foreground": "black",
           "leading_diamond": "\ue0b6",
           "properties": {
             "style": "mixed",
-			"folder_icon": "\ueaf7",
-			"cycle": ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00"]
+			"folder_icon": "\ueaf7"
           },
           "style": "diamond",
           "template": " {{ .Path }} ",
@@ -41,7 +50,7 @@
         {
           "background": "#01C5FF",
           "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#00FF50{{ end }}"
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:git-dirty-background{{ end }}"
           ],
           "foreground": "black",
           "powerline_symbol": "\ue0b0",

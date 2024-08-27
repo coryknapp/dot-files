@@ -1,3 +1,8 @@
+$commandColor = [System.ConsoleColor]::Blue
+$failColor = [System.ConsoleColor]::DarkRed
+$successColor = [System.ConsoleColor]::DarkCyan
+$warningColor = [System.ConsoleColor]::Magenta
+
 #Stuff to keep out of public repo
 $scriptPaths = @(
     "$HOME\Code\knapp-gainwell-tools\knapp-gainwell-tools.ps1",
@@ -79,14 +84,22 @@ function which {
 	echo (Get-Command $Command).Source
 }
 
-function Kill-Port{
+function Kill-Port {
     param (
         [string]$Port
     )
-	$Process = Get-NetTCPConnection | Where-Object { $_.LocalPort -eq $Port }
-	if ($Process) {
-		Stop-Process -Id $Process.OwningProcess -Force
-	}
+
+    $Processes = Get-NetTCPConnection | Where-Object { $_.LocalPort -eq $Port }
+
+    if ($Processes) {
+        foreach ($Process in $Processes ) {
+            $command = "Stop-Process -Id $($Process.OwningProcess) -Force"
+            Write-Host -ForegroundColor $commandColor $command
+            Invoke-Expression $command
+        }
+    } else {
+        Write-Host -ForegroundColor $warningColor "No process found for port $Port"
+    }
 }
 
 function Restart-Visual-Studio{

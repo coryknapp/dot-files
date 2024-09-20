@@ -25,7 +25,7 @@ foreach ($scriptPath in $scriptPaths) {
 
 # list user defined functions
 function pfunc {
-	Get-Command -CommandType Function | Where-Object { -not [string]::IsNullOrEmpty($_.Source) -eq $false } | Select-Object -Property Name
+	Get-Command -CommandType Function | Where-Object { -not [string]::IsNullOrEmpty($_.Source) -eq $false } | Select-Object -Property Name | findstr /v "^[a-zA-Z0-9]:"
 }
 
 function p {

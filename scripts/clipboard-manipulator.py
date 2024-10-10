@@ -31,7 +31,7 @@ def git_branch(s):
   s = standup_summery(s)
   s = s.strip().replace(" ", "_").replace("_-_", "-")
   s = re.sub(r'[^a-zA-Z0-9._/-]', '-', s)
-  return s
+  return f"AB#{s}"
 
 def standup_summery(s):
   """

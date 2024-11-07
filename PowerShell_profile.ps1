@@ -23,6 +23,53 @@ foreach ($scriptPath in $scriptPaths) {
     }
 }
 
+if (-not $Global:ProcessDictionary) {
+    $Global:ProcessDictionary = @{}
+}
+
+function Register-Process-Build {
+	param (
+		$processName
+	)
+	$Global:ProcessDictionary[$processName] = Get-Date
+}
+
+function Process-Status {
+    param (
+        $processList
+    )
+	$checkmark = [char]0x2713
+	$noX = [char]0x2718
+	$bug = "B"
+	
+    foreach ($processName in $processList) {
+        # Check if the process is running
+        $process = Get-Process -Name $processName -ErrorAction SilentlyContinue
+
+        if ($process) {
+			Write-Host -NoNewline -ForegroundColor green "$checkmark $processName"
+			$processTimeText = Process-Status-Last-Built-Text $processName
+			Write-Host -ForegroundColor white " $processTimeText"
+        } else {
+            Write-Host -ForegroundColor red "$noX $processName"
+        }
+    }
+}
+
+function Process-Status-Last-Built-Text {
+	param (
+		$processName
+	)
+	if($Global:ProcessDictionary.ContainsKey($processName)) {
+		
+		$currentDate = Get-Date
+		$timeDifference = $currentDate - $Global:ProcessDictionary[$processName]
+		
+        $minutes = [math]::Floor($timeDifference.TotalMinutes)
+        "$minutes"
+    }
+}
+
 # list user defined functions
 function pfunc {
 	Get-Command -CommandType Function | Where-Object { -not [string]::IsNullOrEmpty($_.Source) -eq $false } | Select-Object -Property Name | findstr /v "^[a-zA-Z0-9]:"
@@ -74,6 +121,10 @@ function stash {
 	$command = "git stash push --include-untracked --message ""$message"""
 	Write-Host -ForegroundColor DarkCyan $command
 	Invoke-Expression $command
+}
+
+function commit {
+	git commit -m $(git rev-parse --abbrev-ref HEAD)
 }
 
 function which {

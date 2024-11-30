@@ -23,17 +23,6 @@ foreach ($scriptPath in $scriptPaths) {
     }
 }
 
-if (-not $Global:ProcessDictionary) {
-    $Global:ProcessDictionary = @{}
-}
-
-function Register-Process-Build {
-	param (
-		$processName
-	)
-	$Global:ProcessDictionary[$processName] = Get-Date
-}
-
 function Monitor-DirectoryForXML {
     param (
         [Parameter(Mandatory = $true)]

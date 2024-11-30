@@ -34,6 +34,53 @@ function Register-Process-Build {
 	$Global:ProcessDictionary[$processName] = Get-Date
 }
 
+function Monitor-DirectoryForXML {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$Path
+    )
+
+    # Ensure the provided path exists
+    if (-not (Test-Path -Path $Path)) {
+        Write-Error "The specified path does not exist: $Path"
+        return
+    }
+
+    # Create a FileSystemWatcher to monitor the directory
+    $watcher = New-Object System.IO.FileSystemWatcher
+    $watcher.Path = $Path
+    $watcher.Filter = "*.xml"
+    $watcher.IncludeSubdirectories = $true
+    $watcher.EnableRaisingEvents = $true
+
+    # Define an event action
+    $action = {
+        $fullPath = $Event.SourceEventArgs.FullPath
+        $changeType = $Event.SourceEventArgs.ChangeType
+        if ($changeType -eq "Created") {
+            Write-Host "New XML file detected: $fullPath" -ForegroundColor Green
+            Start-Process -FilePath $fullPath
+        }
+    }
+
+    # Register the event
+    $registeredEvent = Register-ObjectEvent -InputObject $watcher -EventName Created -Action $action
+
+    Write-Host "Monitoring $Path for new XML files. Press Ctrl+C to stop."
+
+    # Keep the function running
+    try {
+        while ($true) {
+            Start-Sleep -Seconds 1
+        }
+    } finally {
+        # Cleanup
+        Unregister-Event -SourceIdentifier $registeredEvent.Name
+        $watcher.Dispose()
+        Write-Host "Stopped monitoring."
+    }
+}
+
 function Process-Status {
     param (
         $processList
@@ -60,14 +107,34 @@ function Process-Status-Last-Built-Text {
 	param (
 		$processName
 	)
-	if($Global:ProcessDictionary.ContainsKey($processName)) {
+	$fileName = "$home\\.ps-process-status.json"
+
+	if (Test-Path -Path $fileName) {
+		$jsonContent = Get-Content -Path $fileName -Raw | ConvertFrom-Json
+	} else {
+		$jsonContent = @{}
+	}
 		
-		$currentDate = Get-Date
-		$timeDifference = $currentDate - $Global:ProcessDictionary[$processName]
-		
-        $minutes = [math]::Floor($timeDifference.TotalMinutes)
-        "$minutes"
-    }
+	if($jsonContent.PSObject.Properties[$processName]) {
+		return $jsonContent.'EHR.WebAggregator'.DateTime
+	}
+}
+
+function Register-Process-Status-Last-Built {
+	param (
+		$processName
+	)
+	$fileName = "$home\\.ps-process-status.json"
+
+	if (Test-Path -Path fileName) {
+		$jsonContent = Get-Content -Path $fileName -Raw | ConvertFrom-Json
+	} else {
+		$jsonContent = @{}
+	}
+	
+	$jsonContent[$processName] = Get-Date
+	
+	$jsonContent | ConvertTo-Json -Depth 5 | Set-Content -Path $fileName
 }
 
 # list user defined functions
@@ -185,19 +252,6 @@ function copy-current-branch-name {
 	git branch --show-current | Set-Clipboard
 }
 
-####################################################################################################
-# This function copies a folder (and optionally, its subfolders)
-#
-# When copying subfolders it calls itself recursively
-#
-# Requires WebClient object $webClient defined, e.g. $webClient = New-Object System.Net.WebClient
-#
-# Parameters:
-#   $source      - The url of folder to copy, with trailing /, e.g. http://website/folder/structure/
-#   $destination - The folder to copy $source to, with trailing \ e.g. D:\CopyOfStructure\
-#   $recursive   - True if subfolders of $source are also to be copied or False to ignore subfolders
-#   Return       - None
-####################################################################################################
 $webClient = New-Object System.Net.WebClient
 Function Copy-Folder([string]$source, [string]$destination, [bool]$recursive) {
     if (!$(Test-Path($destination))) {

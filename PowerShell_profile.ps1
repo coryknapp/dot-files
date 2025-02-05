@@ -76,7 +76,6 @@ function Process-Status {
     )
 	$checkmark = [char]0x2713
 	$noX = [char]0x2718
-	$bug = "B"
 	
     foreach ($processName in $processList) {
         # Check if the process is running
@@ -84,7 +83,7 @@ function Process-Status {
 
         if ($process) {
 			Write-Host -NoNewline -ForegroundColor green "$checkmark $processName"
-			$processTimeText = Process-Status-Last-Built-Text $processName
+			$processTimeText = Process-Status-Last-Built-Text $process
 			Write-Host -ForegroundColor white " $processTimeText"
         } else {
             Write-Host -ForegroundColor red "$noX $processName"
@@ -93,39 +92,43 @@ function Process-Status {
 }
 
 function Process-Status-Last-Built-Text {
-	param (
-		$processName
-	)
-	$fileName = "$home\\.ps-process-status.json"
+    param (
+        [Parameter(Mandatory = $true)]
+        $process
+    )
 
-	if (Test-Path -Path $fileName) {
-		$jsonContent = Get-Content -Path $fileName -Raw | ConvertFrom-Json
-	} else {
-		$jsonContent = @{}
-	}
-		
-	if($jsonContent.PSObject.Properties[$processName]) {
-		return $jsonContent.'EHR.WebAggregator'.DateTime
-	}
+	$uptime = (Get-Date) - $process.StartTime
+
+    $components = @()
+    
+	if ($uptime.Days -gt 0) {
+        $components += "$($uptime.Days) $(Pluralize 'day')"
+    }
+    if ($uptime.Hours -gt 0) {
+        $components += "$($uptime.Hours) $(Pluralize 'hour')"
+    }
+    if ($uptime.Minutes -gt 0) {
+        $components += "$($uptime.Minutes) $(Pluralize 'minutes')"
+    }
+	
+    $components += "$($uptime.Seconds) $(Pluralize 'seconds')"
+
+	return $components -join ", "
 }
 
-function Register-Process-Status-Last-Built {
+function Pluralize {
 	param (
-		$processName
+		[string]$word,
+		[int]$count
 	)
-	$fileName = "$home\\.ps-process-status.json"
-
-	if (Test-Path -Path fileName) {
-		$jsonContent = Get-Content -Path $fileName -Raw | ConvertFrom-Json
-	} else {
-		$jsonContent = @{}
+	
+	if( $count -eq 1 ) {
+		return $word + "s"
 	}
 	
-	$jsonContent[$processName] = Get-Date
-	
-	$jsonContent | ConvertTo-Json -Depth 5 | Set-Content -Path $fileName
+	return $word
 }
-
+	
 # list user defined functions
 function pfunc {
 	Get-Command -CommandType Function | Where-Object { -not [string]::IsNullOrEmpty($_.Source) -eq $false } | Select-Object -Property Name | findstr /v "^[a-zA-Z0-9]:"
@@ -189,6 +192,29 @@ function which {
 	)
 	
 	echo (Get-Command $Command).Source
+}
+
+function ag-gi {
+	ag --path-to-ignore .gitignore $($args[0])
+}
+
+function c {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$InputPath
+    )
+
+    if (Test-Path -Path $InputPath -PathType Container) {
+        # Input is a directory
+        $ResolvedPath = Resolve-Path -Path $InputPath
+    } elseif (Test-Path -Path $InputPath -PathType Leaf) {
+        # Input is a file
+        $ResolvedPath = Split-Path -Path $InputPath -Parent
+    } else {
+        throw "The provided path does not exist: $InputPath"
+    }
+	
+    Set-Location -Path $ResolvedPath
 }
 
 function Kill-Port {
@@ -276,6 +302,25 @@ Function Copy-Folder([string]$source, [string]$destination, [bool]$recursive) {
     }
 }
 
+
+Function ztime {
+	(Get-Date).ToUniversalTime()
+}
+
+Function Delete-Suo-file {
+	$solutionPath = Get-Location
+
+	# Find the .suo file in the .vs directory
+	$suoFilePath = Get-ChildItem -Path $solutionPath -Recurse -Filter "*.suo" -ErrorAction SilentlyContinue | Select-Object -First 1
+
+	if ($suoFilePath) {
+		Write-Host "Deleting .suo file: $($suoFilePath.FullName)"
+		Remove-Item -Path $suoFilePath.FullName -Force
+		Write-Host "The .suo file has been deleted."
+	} else {
+		Write-Host "No .suo file found in the specified solution path."
+	}
+}
 
 # # fancy prompt
 Import-Module -Name posh-git

@@ -1,82 +1,88 @@
 {
-  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "palette": {
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+	 "palette": {
+		 
+		"light-blue": "#b4b8f0",
+        "blue": "#535bc2",
+		"dark-blue": "#0410b8",
+        "green": "#184722",
         "orange": "#FFA500",
-		"purple": "#FF00FF",
-		"pink": "#ff69b4",
-		"blue": "#01C5FF",
-		"green": "#00FF50",
+        "pink": "#ff69b4",
+        "purple": "#FF00FF",
+        "red": "#FF0000",
+        "yellow": "#FFFF00",
 		
-        "warning": "p:orange",
+		"time-background": "p:light-blue",
+		"time-foreground": "p:dark-blue",
 		
-		"path-background":"p:purple",
-		
-		"git-dirty-background":"p:green",
-		"git-clean-background":"p:blue"
-	},
-  "blocks": [
-    {
-      "alignment": "left",
-      "segments": [
+		"path-background": "p:blue",
+		"path-foreground": "p:light-blue",
+
+		"git-clean-background": "p:pink",
+        "git-dirty-background": "p:dark-blue",
+		"git-foreground": "p:light-blue"
+    },
+    "blocks": [
         {
-          "foreground": "yellow",
-          "style": "plain",
-          "template": " \ue0a2 ",
-          "type": "root"
-        },
-        {
-          "background": "p:path-background",
-          "foreground": "black",
-          "leading_diamond": "\ue0b6",
-          "properties": {
-            "style": "mixed",
-			"folder_icon": "\ueaf7"
-          },
-          "style": "diamond",
-          "template": " {{ .Path }} ",
-          "type": "path"
-        },
-		{
-			"type": "sysinfo",
-			"powerline_symbol": "",
-			"foreground": "#ffffff",
-			"background": "#8f43f3",
-			"template": "{{ round .PhysicalPercentUsed .Precision }}%\udb80\udf5b",
-			"properties": {
-				"precision": 2
-			},
-			"style": "powerline"
-		},
-        {
-          "background": "#01C5FF",
-          "background_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:git-dirty-background{{ end }}"
-          ],
-          "foreground": "black",
-          "powerline_symbol": "\ue0b0",
-          "properties": {
-            "branch_ahead_icon": "\u2191",
-            "branch_behind_icon": "\u2193",
-            "branch_gone": "\u2262",
-            "branch_icon": "\ue0a0 ",
-            "branch_identical_icon": "\u2261",
-            "cherry_pick_icon": "\u2713 ",
-            "commit_icon": "\u25b7 ",
-            "fetch_status": true,
-            "merge_icon": "\u25f4 ",
-            "no_commits_icon": "[no commits]",
-            "rebase_icon": "\u2c62 ",
-            "tag_icon": "\u25b6 "
-          },
-          "style": "powerline",
-          "template": " {{ .HEAD }}<p:warning>{{ if gt .Staging.Added 0 }} +{{ .Staging.Added }}{{ end }}{{ if gt .Staging.Modified 0 }} ~{{ .Staging.Modified }}{{ end }}{{ if gt .Staging.Deleted 0 }} -{{ .Staging.Deleted }}{{ end }}</>{{ if gt .Working.Added 0 }} +{{ .Working.Added }}{{ end }}{{ if gt .Working.Modified 0 }} ~{{ .Working.Modified }}{{ end }}{{ if gt .Working.Deleted 0 }} -{{ .Working.Deleted }}{{ end }}",
-          "type": "git"
+            "alignment": "left",
+            "segments": [
+                {
+                    "foreground": "yellow",
+                    "style": "plain",
+                    "template": "  ",
+                    "type": "root"
+                },
+                {
+                    "foreground": "p:time-foreground",
+					"background": "p:time-background",
+                    "properties": {
+                        "time_format": "3:04PM"
+                    },
+                    "style": "powerline",
+                    "type": "time"
+                },
+                {
+                    "background": "p:path-background",
+                    "foreground": "p:path-foreground",
+                    "powerline_symbol": "",
+                    "properties": {
+                        "folder_icon": "",
+                        "style": "mixed"
+                    },
+                    "style": "powerline",
+                    "template": " {{ .Path }} ",
+                    "type": "path"
+                },
+                {
+                    "background": "p:git-clean-background",
+                    "background_templates": [
+                        "{{ if or (.Working.Changed) (.Staging.Changed) }}p:git-dirty-background{{ end }}"
+                    ],
+                    "foreground": "p:git-foreground",
+                    "powerline_symbol": "",
+                    "properties": {
+                        "branch_ahead_icon": "↑",
+                        "branch_behind_icon": "↓",
+                        "branch_gone": "≢",
+                        "branch_icon": " ",
+                        "branch_identical_icon": "≡",
+                        "cherry_pick_icon": "✓ ",
+                        "commit_icon": "▷ ",
+                        "fetch_status": true,
+                        "merge_icon": "◴ ",
+                        "no_commits_icon": "[no commits]",
+                        "rebase_icon": "Ɫ ",
+                        "tag_icon": "▶ "
+                    },
+                    "style": "powerline",
+                    "template": " {{ .HEAD }}{{ if gt .Staging.Added 0 }} +{{ .Staging.Added }}{{ end }}{{ if gt .Staging.Modified 0 }} ~{{ .Staging.Modified }}{{ end }}{{ if gt .Staging.Deleted 0 }} -{{ .Staging.Deleted }}{{ end }}{{ if gt .Working.Added 0 }} +{{ .Working.Added }}{{ end }}{{ if gt .Working.Modified 0 }} ~{{ .Working.Modified }}{{ end }}{{ if gt .Working.Deleted 0 }} -{{ .Working.Deleted }}{{ end }}",
+                    "type": "git"
+                }
+            ],
+            "type": "prompt"
         }
-      ],
-      "type": "prompt"
-    }
-  ],
-  "console_title_template": "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}",
-  "final_space": true,
-  "version": 2
+    ],
+    "console_title_template": "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}",
+    "final_space": true,
+    "version": 2
 }

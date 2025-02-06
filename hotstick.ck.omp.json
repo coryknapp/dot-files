@@ -18,7 +18,7 @@
 		"path-background": "p:blue",
 		"path-foreground": "p:light-blue",
 
-		"git-clean-background": "p:pink",
+		"git-clean-background": "p:purple",
         "git-dirty-background": "p:dark-blue",
 		"git-staged-foreground": "p:pink",
 		"git-foreground": "p:light-blue"

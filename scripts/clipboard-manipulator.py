@@ -78,6 +78,12 @@ def current_git_branch(s):
     """
     return subprocess.check_output(['git', 'branch', '--show-current'], text=True).strip()
 
+def strip_quotes(s):
+    """
+    strip quotes
+    """
+    return s.replace('"', '')
+
 def print_help():
     """
     print this message
@@ -99,7 +105,8 @@ command_handlers = {
     'bn': git_branch,
     '/.': slash_dot,
     './': dot_slash,
-    'cb': current_git_branch
+    'cb': current_git_branch,
+    'sq': strip_quotes,
 }
 
 if __name__ == "__main__":

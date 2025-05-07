@@ -3,6 +3,8 @@ $failColor = [System.ConsoleColor]::DarkRed
 $successColor = [System.ConsoleColor]::DarkCyan
 $warningColor = [System.ConsoleColor]::Magenta
 
+Set-PSReadLineKeyHandler -Key "Alt+w" -Function AcceptNextSuggestionWord
+
 #Stuff to keep out of public repo
 $scriptPaths = @(
     "$HOME\Code\knapp-gainwell-tools\knapp-gainwell-tools.ps1",
@@ -320,6 +322,10 @@ Function Delete-Suo-file {
 	} else {
 		Write-Host "No .suo file found in the specified solution path."
 	}
+}
+
+Function ads {
+	& "C:\Program Files\Azure Data Studio\azuredatastudio.exe" $args[0]
 }
 
 # # fancy prompt

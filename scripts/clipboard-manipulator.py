@@ -29,8 +29,9 @@ def git_branch(s):
   suggest a git branch name
   """
   s = standup_summery(s)
-  s = s.strip().replace(" ", "_").replace("_-_", "-")
-  s = re.sub(r'[^a-zA-Z0-9._/-]', '-', s)
+  s = re.sub(r'[^a-zA-Z0-9._-]', '-', s)
+  s = re.sub(r'-+', '-', s)
+  s = s.strip('-')
   return f"AB#{s}"
 
 def standup_summery(s):

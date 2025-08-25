@@ -309,6 +309,15 @@ Function ztime {
 	(Get-Date).ToUniversalTime()
 }
 
+function batnp {
+	    param (
+        [Parameter(Mandatory = $true)]
+        [string]$InputPath
+    )
+	bat --paging=never $InputPath
+}
+
+
 Function Delete-Suo-file {
 	$solutionPath = Get-Location
 
